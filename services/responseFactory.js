@@ -26,7 +26,8 @@ ResponseFactory.prototype = {
                 return productMenu.getResponse();
                 break;
             case PRODUCT:
-                return checkoutMenu.getResponse(id)
+                return checkoutMenu.getResponse(id);
+                break;
         }
     }
 };
