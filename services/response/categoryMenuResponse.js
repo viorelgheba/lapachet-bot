@@ -1,10 +1,11 @@
 'use strict';
 
-function CategoryMenuResponse() {}
+function CategoryMenuResponse() {
+}
 
 CategoryMenuResponse.prototype = {
     getResponse: function () {
-        return {
+        return JSON.stringify({
             attachment: {
                 type: "template",
                 payload: {
@@ -29,7 +30,7 @@ CategoryMenuResponse.prototype = {
                     ]
                 }
             }
-        };
+        });
     }
 };
 
