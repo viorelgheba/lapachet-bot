@@ -23,11 +23,11 @@ router.post('/', function (req, res) {
                 if (messagingEvent.optin) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
-                    facebookService.sendTextMessage(messagingEvent.message.text);
+                    facebookService.sendTextMessage(messagingEvent.recipient.id, messagingEvent.message.text);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
-                    facebookService.sendTextMessage("Postback test");
+                    facebookService.sendTextMessage(messagingEvent.recipient.id, "Postback test");
                     //receivedPostback(messagingEvent);
                 } else if (messagingEvent.read) {
                     //receivedMessageRead(messagingEvent);
