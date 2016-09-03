@@ -18,9 +18,6 @@ ResponseFactory.prototype = {
                 console.log("SWITCH", "Got All!");
                 return categoryMenu.getResponse();
                 break;
-            default:
-                return "dadsasdas";
-                break;
         }
     }
 };

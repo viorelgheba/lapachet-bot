@@ -72,6 +72,9 @@ FacebookService.prototype = {
 
     },
     sendMessage: function (recipientId, message) {
+        if (message === '') {
+            return;
+        }
         request({
             url: process.env.FACEBOOK_API_URL,
             qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
