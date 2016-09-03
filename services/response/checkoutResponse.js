@@ -14,7 +14,7 @@ CheckoutResponse.prototype = {
                 type: "template",
                 payload: {
                     template_type: "receipt",
-                    recipient_name: this.product.id,
+                    recipient_name: product.name,
                     order_number: "12345678902",
                     currency: "USD",
                     payment_method: "Numerar",
