@@ -1,14 +1,13 @@
-var Wehhook = Webhook.prototype;
+var method = Webhook.prototype;
 
-function Webhook(request) {
-    this._request = request;
+function Webhook() {
 }
 
-Webhook.verify = function (token) {
-    var requestToken = this._request.query(['hub.verify_token']);
-    var challenge = this._request.query(['hub.challenge']);
+method.verify = function (req) {
+    var token = req.query['hub.verify_token'];
+    var challenge = req.query['hub.challenge'];
 
-    if (token === requestToken) {
+    if (token === process.env.VERIFY_TOKEN) {
         return challenge;
     }
 
