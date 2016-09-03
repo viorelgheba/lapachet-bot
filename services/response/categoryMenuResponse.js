@@ -1,5 +1,5 @@
 'use strict';
-var apiService = require('../services/apiService').getInstance();
+var apiService = require('../apiService').getInstance();
 
 function CategoryMenuResponse() {
     this._categories = apiService.getProductCategories();
