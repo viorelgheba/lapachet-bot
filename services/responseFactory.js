@@ -10,7 +10,7 @@ function ResponseFactory() {
 }
 
 ResponseFactory.prototype = {
-    getRootMenuResponse: function (message) {
+    getResponse: function (message) {
         this.loadPayload(message);
 
         switch (responsePayload.getType()) {
@@ -20,9 +20,6 @@ ResponseFactory.prototype = {
                 return categoryMenu.getResponse();
                 break;
         }
-    },
-    getResponse: function (message) {
-        this.getRootMenuResponse(message);
     },
     loadPayload: function (payload) {
         if (payload === undefined || payload === undefined || payload.type === undefined) {
