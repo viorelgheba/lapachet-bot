@@ -34,7 +34,8 @@ CategoryMenuResponse.prototype = {
                     type: "product"
                 });
 
-                newButton.payload = Buffer.from(payload).toString('base64');
+                newButton.payload = payload;
+                console.log(newButton.payload);
                 response.attachment.payload.buttons.push(newButton);
             });
         }
