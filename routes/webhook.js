@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var webhook = require('../services/webhookService');
-const FacebookService = require('../services/facebookService');
+var facebook = require('../services/facebookService');
 
 /* GET webhook page. */
 router.get('/', function (req, res) {
@@ -10,8 +10,8 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    var facebookService = new FacebookService();
     var data = req.body;
+    var facebookService = new facebook.FacebookService();
 
     if (data.object == 'page') {
         data.entry.forEach(function (pageEntry) {
@@ -21,17 +21,17 @@ router.post('/', function (req, res) {
             // Iterate over each messaging event
             pageEntry.messaging.forEach(function (messagingEvent) {
                 if (messagingEvent.optin) {
-                    receivedAuthentication(messagingEvent);
+                    //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
-                    receivedMessage(messagingEvent);
+                    facebookService.sendTextMessage(messagingEvent.message);
                 } else if (messagingEvent.delivery) {
-                    receivedDeliveryConfirmation(messagingEvent);
+                    //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
-                    receivedPostback(messagingEvent);
+                    //receivedPostback(messagingEvent);
                 } else if (messagingEvent.read) {
-                    receivedMessageRead(messagingEvent);
+                    //receivedMessageRead(messagingEvent);
                 } else if (messagingEvent.account_linking) {
-                    receivedAccountLink(messagingEvent);
+                    //receivedAccountLink(messagingEvent);
                 } else {
                     console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 }

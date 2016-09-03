@@ -97,9 +97,4 @@ FacebookService.prototype = {
     }
 };
 
-module.exports.facebookService = newInstance;
-
-var service = new FacebookService();
-function newInstance() {
-    return service;
-}
+module.exports.FacebookService = FacebookService;
