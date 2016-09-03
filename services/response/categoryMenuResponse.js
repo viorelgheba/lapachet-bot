@@ -24,14 +24,17 @@ CategoryMenuResponse.prototype = {
                 var newButton = {
                     type: "postback",
                     title: category.title,
-                    payload: {
-                        data: {
-                            id: category.id
-                        },
-                        type: "category"
-                    }
+                    payload: {}
                 };
 
+                var payload = JSON.stringify({
+                    data: {
+                        id: product.id
+                    },
+                    type: "product"
+                });
+
+                newButton.payload = Buffer.from(payload).toString('base64');
                 response.attachment.payload.buttons.push(newButton);
             });
         }
