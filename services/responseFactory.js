@@ -1,6 +1,7 @@
 'use strict';
 
 var categoryMenu = require('../services/response/categoryMenuResponse').getInstance();
+var apiService = require('../services/apiService');
 
 const MENU = 'menu';
 const ALL = 'all';
