@@ -1,3 +1,5 @@
+'use strict';
+
 var request = require('request');
 
 const API_HOST = process.env.UI_API_URL;

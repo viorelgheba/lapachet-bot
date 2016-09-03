@@ -31,14 +31,14 @@ WebHookService.prototype = {
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
-                        facebookApi.sendTextMessage(
+                        facebookApi.sendMessage(
                             senderId,
                             responseFactory.getResponse(messagingEvent.message.text)
                         );
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
-                        facebookApi.sendTextMessage(
+                        facebookApi.sendMessage(
                             senderId,
                             responseFactory.getResponse(messagingEvent.postback.payload)
                         );
