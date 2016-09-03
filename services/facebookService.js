@@ -60,7 +60,13 @@ FacebookService.prototype = {
 
         this.sendMessage(recipientId, message);
     },
-    sendGenericTemplate: function (recipientId, template) {
+    sendGenericTemplate: function (recipientId) {
+
+    },
+    sendButtonTemplate: function (recipientId) {
+
+    },
+    sendRecipientTemplate: function (recipientId) {
 
     },
     sendMessage: function (recipientId, message) {
