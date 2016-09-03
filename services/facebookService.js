@@ -97,11 +97,14 @@ FacebookService.prototype = {
                 if (response.body.error) {
                     console.log('Error: ', response.body.error);
                 }
-                /*console.error(response);
-                console.error(error);*/
             }
         });
     }
 };
 
-module.exports.FacebookService = FacebookService;
+/**
+ * @returns {FacebookService}
+ */
+module.exports.getInstance = function () {
+    return new FacebookService();
+};
