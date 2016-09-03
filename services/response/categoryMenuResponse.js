@@ -39,6 +39,7 @@ CategoryMenuResponse.prototype = {
                     title: category.title,
                     payload: category.name
                 };
+                console.log("new button", newButton);
                 response.attachment.payload.buttons.add(newButton);
             });
         }
