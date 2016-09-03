@@ -13,6 +13,8 @@ router.post('/', function (req, res) {
     var events = req.body.entry[0].messaging,
         facebookService = new FacebookService();
 
+    console.log(JSON.stringify(req));
+
     for (var i = 0; i < events.length; i++) {
         var event = events[i];
         console.log(JSON.stringify(event));
