@@ -60,6 +60,9 @@ FacebookService.prototype = {
 
         this.sendMessage(recipientId, message);
     },
+    sendGenericTemplate: function (recipientId, template) {
+
+    },
     sendMessage: function (recipientId, message) {
         request({
             url: process.env.FACEBOOK_API_URL,

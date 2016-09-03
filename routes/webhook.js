@@ -1,12 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var Webhook = require('../services/webhookService');
 
 /* GET webhook page. */
 router.get('/', function (req, res) {
-    var Webhook = require('../services/webhookService');
     var hook = new Webhook();
-
     res.send(hook.verify(req));
+});
+
+router.post('/', function (req, res) {
+    console.log(req);
+    res.send("test");
 });
 
 module.exports = router;
