@@ -7,7 +7,8 @@ const ATTACHMENT_TYPE_AUDIO = 'audio';
 const ATTACHMENT_TYPE_VIDEO = 'video';
 const ATTACHMENT_TYPE_FILE = 'file';
 
-function FacebookService() {}
+function FacebookService() {
+}
 
 FacebookService.prototype = {
     sendMarkSeenAction: function (recipientId) {
@@ -72,36 +73,35 @@ FacebookService.prototype = {
 
     },
     sendMessage: function (recipientId, message) {
-        if (message === '') {
-            return;
-        }
-        request({
-            url: process.env.FACEBOOK_API_URL,
-            qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-            method: 'POST',
-            json: {
-                recipient: {
-                    id: recipientId
-                },
-                message: message
-            }
-        }, function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-                var recipientId = body.recipient_id;
-                var messageId = body.message_id;
-
-                console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-            } else {
-                console.error("Unable to send message.");
-                if (error) {
-                    console.log('Error sending message: ', error);
+        request(
+            {
+                url: process.env.FACEBOOK_API_URL,
+                qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+                method: 'POST',
+                json: {
+                    recipient: {
+                        id: recipientId
+                    },
+                    message: message
                 }
+            },
+            function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var recipientId = body.recipient_id;
+                    var messageId = body.message_id;
 
-                if (response.body.error) {
-                    console.log('Error: ', response.body.error);
+                    console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+                } else {
+                    console.error("Unable to send message.");
+                    if (error) {
+                        console.log('Error sending message: ', error);
+                    }
+
+                    if (response.body.error) {
+                        console.log('Error: ', response.body.error);
+                    }
                 }
-            }
-        });
+            });
     }
 };
 

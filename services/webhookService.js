@@ -3,7 +3,8 @@
 var responseFactory = require('../services/responseFactory').getInstance();
 var facebookApi = require('../services/facebookService').getInstance();
 
-function WebHookService() {}
+function WebHookService() {
+}
 
 WebHookService.prototype = {
     verify: function (req) {
@@ -31,15 +32,17 @@ WebHookService.prototype = {
                     } else if (messagingEvent.message) {
                         console.log('Text: ', messagingEvent.message.text);
                         var msg = responseFactory.getResponse(messagingEvent.message.text);
-                        console.log(msg);
-                        facebookApi.sendMessage(senderId, msg);
+                        if (postBackMsg !== undefined) {
+                            facebookApi.sendMessage(senderId, msg);
+                        }
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
                         var payload = messagingEvent.postback.payload;
                         var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
-                        console.log('PostBack Message: ', postBackMsg);
-                        facebookApi.sendMessage(senderId, postBackMsg);
+                        if (postBackMsg !== undefined) {
+                            facebookApi.sendMessage(senderId, postBackMsg);
+                        }
                     } else if (messagingEvent.read) {
                         //receivedMessageRead(messagingEvent);
                     } else if (messagingEvent.account_linking) {
