@@ -32,16 +32,16 @@ WebHookService.prototype = {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
                         console.log('Text: ', messagingEvent.message.text);
-                        var message = responseFactory.getResponse(messagingEvent.message.text);
-                        console.log(message);
-                        facebookApi.sendMessage(senderId, message);
+                        var msg = responseFactory.getResponse(messagingEvent.message.text);
+                        console.log(msg);
+                        facebookApi.sendMessage(senderId, msg);
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
                         console.log('Postback: ', messagingEvent.postback);
-                        var message = responseFactory.getResponse(messagingEvent.postback.payload);
-                        console.log(message);
-                        facebookApi.sendMessage(senderId, message);
+                        var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
+                        console.log(postBackMsg);
+                        facebookApi.sendMessage(senderId, postBackMsg);
                     } else if (messagingEvent.read) {
                         //receivedMessageRead(messagingEvent);
                     } else if (messagingEvent.account_linking) {
