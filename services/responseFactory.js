@@ -5,6 +5,7 @@ var responsePayload = require('../services/response/responsePayload').getInstanc
 
 const MENU = 'menu';
 const ALL = 'all';
+const CATEGORY = 'category'
 
 function ResponseFactory() {
 }
@@ -12,6 +13,12 @@ function ResponseFactory() {
 ResponseFactory.prototype = {
     getResponse: function (message) {
         this.loadPayload(message);
+        if (message === MENU) {
+            responsePayload.setType(MENU);
+        }
+        if (message === ALL) {
+            responsePayload.setType(ALL);
+        }
 
         switch (responsePayload.getType()) {
             case MENU:
