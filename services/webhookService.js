@@ -1,17 +1,24 @@
-var method = Webhook.prototype;
+var request = require('request');
 
-function Webhook() {
+
+function WebHookService() {
 }
 
-method.verify = function (req) {
-    var token = req.query['hub.verify_token'];
-    var challenge = req.query['hub.challenge'];
+WebHookService.prototype = {
+    verify: function (req) {
+        var token = req.query['hub.verify_token'];
+        var challenge = req.query['hub.challenge'];
 
-    if (token === process.env.VERIFY_TOKEN) {
-        return challenge;
+        if (token === process.env.VERIFY_TOKEN) {
+            return challenge;
+        }
+
+        return "Invalid token received!";
+    },
+    handle: function (req) {
+        // TODO factory to handle bot received data
     }
 
-    return "Invalid verify token!";
 };
 
-module.exports = Webhook;
+module.exports.WebHookService = WebHookService;

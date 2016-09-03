@@ -1,3 +1,5 @@
+'use strict';
+
 var request = require('request');
 
 const ATTACHMENT_TYPE_IMAGE = 'image';
@@ -88,11 +90,16 @@ FacebookService.prototype = {
                 console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
             } else {
                 console.error("Unable to send message.");
-                console.error(response);
-                console.error(error);
+                /*console.error(response);
+                console.error(error);*/
             }
         });
     }
 };
 
-module.exports = FacebookService;
+module.exports.facebookService = newInstance;
+
+var service = new FacebookService();
+function newInstance() {
+    return service;
+}

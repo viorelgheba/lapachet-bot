@@ -1,18 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var Webhook = require('../services/webhookService');
+var webhook = require('../services/webhookService');
 const FacebookService = require('../services/facebookService');
 
 /* GET webhook page. */
 router.get('/', function (req, res) {
-    var hook = new Webhook();
-    res.send(hook.verify(req));
+    var WebHookService = new webhook.WebHookService();
+    res.send(WebHookService.verify(req));
 });
 
 router.post('/', function (req, res) {
     var facebookService = new FacebookService();
     var data = req.body;
-    console.log(JSON.stringify(data));
 
     if (data.object == 'page') {
         data.entry.forEach(function (pageEntry) {
@@ -21,10 +20,7 @@ router.post('/', function (req, res) {
 
             // Iterate over each messaging event
             pageEntry.messaging.forEach(function (messagingEvent) {
-                if (messagingEvent.message) {
-                    facebookService.sendTextMessage(messagingEvent.sender.id, messagingEvent.message.text);
-                }
-                /*if (messagingEvent.optin) {
+                if (messagingEvent.optin) {
                     receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
                     receivedMessage(messagingEvent);
@@ -32,9 +28,13 @@ router.post('/', function (req, res) {
                     receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
                     receivedPostback(messagingEvent);
+                } else if (messagingEvent.read) {
+                    receivedMessageRead(messagingEvent);
+                } else if (messagingEvent.account_linking) {
+                    receivedAccountLink(messagingEvent);
                 } else {
                     console.log("Webhook received unknown messagingEvent: ", messagingEvent);
-                }*/
+                }
             });
         });
 
