@@ -15,6 +15,7 @@ router.post('/', function (req, res) {
 
     for (var i = 0; i < events.length; i++) {
         var event = events[i];
+        console.log(JSON.stringify(event));
 
         if (event.message && event.message.text) {
             facebookService.sendTextMessage(event.sender.id, event.message.text);
