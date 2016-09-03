@@ -29,5 +29,5 @@ ResponseFactory.prototype = {
  * @returns {ResponseFactory}
  */
 module.exports.getInstance = function () {
-    new ResponseFactory();
+    return new ResponseFactory();
 };
