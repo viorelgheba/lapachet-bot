@@ -3,7 +3,7 @@
 var redis = require('redis');
 
 function RedisClient(db) {
-    this._client = redis.createClient(process.env.REDIS_HOST, process.env.REDIS_PORT);
+    this._client = redis.createClient(process.env.REDIS_HOST);
     this._client.select(db);
 }
 
