@@ -23,7 +23,7 @@ router.post('/', function (req, res) {
                 if (messagingEvent.optin) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
-                    facebookService.sendTextMessage(messagingEvent.message);
+                    facebookService.sendTextMessage(messagingEvent.message.text);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
