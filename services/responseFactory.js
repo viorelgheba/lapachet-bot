@@ -15,7 +15,7 @@ ResponseFactory.prototype = {
     getResponse: function (message) {
         this.loadPayload(message);
         console.info("Message", message);
-        // console.info("Decoded message", Buffer.from(message,'base64').toString('ascii'));
+        console.info("Decoded message", Buffer.from(message,'base64').toString('ascii'));
         console.log("xxxxxxxxxxxxxxxxxx");
         if (message === MENU) {
             responsePayload.setType(MENU);
