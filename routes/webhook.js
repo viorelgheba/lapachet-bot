@@ -5,11 +5,15 @@ const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
 /* GET webhook page. */
 router.get('/', function (req, res, next) {
-    if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
-        res.send(req.query['hub.challenge']);
-    } else {
-        res.send('Invalid verify token');
-    }
+
+    var Webhook = require('../service/webhookService');
+    res.send(Webhook.verify(req, VERIFY_TOKEN));
+
+    // if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
+    //     res.send(req.query['hub.challenge']);
+    // } else {
+    //     res.send('Invalid verify token');
+    // }
 });
 
 module.exports = router;
