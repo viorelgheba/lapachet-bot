@@ -33,14 +33,14 @@ WebHookService.prototype = {
                     } else if (messagingEvent.message) {
                         facebookApi.sendTextMessage(
                             senderId,
-                            responseFactory.getResponse(message.message.text)
+                            responseFactory.getResponse(messagingEvent.message.text)
                         );
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
                         facebookApi.sendTextMessage(
                             senderId,
-                            responseFactory.getResponse(message.postback.payload)
+                            responseFactory.getResponse(messagingEvent.postback.payload)
                         );
                     } else if (messagingEvent.read) {
                         //receivedMessageRead(messagingEvent);
