@@ -81,10 +81,15 @@ FacebookService.prototype = {
                 message: message
             }
         }, function(error, response, body) {
-            if (error) {
-                console.log('Error sending message: ', error);
-            } else if (response.body.error) {
-                console.log('Error: ', response.body.error);
+            if (!error && response.statusCode == 200) {
+                var recipientId = body.recipient_id;
+                var messageId = body.message_id;
+
+                console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+            } else {
+                console.error("Unable to send message.");
+                console.error(response);
+                console.error(error);
             }
         });
     }
