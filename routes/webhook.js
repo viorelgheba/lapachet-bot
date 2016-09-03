@@ -12,6 +12,7 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
     var facebookService = new FacebookService();
     var data = req.body;
+    console.log(JSON.stringify(data));
 
     if (data.object == 'page') {
         data.entry.forEach(function (pageEntry) {
