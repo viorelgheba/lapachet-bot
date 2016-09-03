@@ -6,7 +6,7 @@ function CategoryMenuResponse() {
 }
 
 CategoryMenuResponse.prototype = {
-    getResponse: function (categories) {
+    getResponse: function () {
         var response = {
             attachment: {
                 type: "template",
@@ -18,8 +18,8 @@ CategoryMenuResponse.prototype = {
             }
         };
 
-        if (categories !== undefined) {
-            categories.forEach(function (category) {
+        if (this._categories !== undefined) {
+            this._categories.forEach(function (category) {
                 var newButton = {
                     type: "postback",
                     title: category.title,
