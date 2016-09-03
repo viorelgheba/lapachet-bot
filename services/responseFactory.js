@@ -11,9 +11,9 @@ function ResponseFactory() {}
 ResponseFactory.prototype = {
     getResponse: function (message) {
         switch (message) {
-            case MENU:
+            case menu:
                 break;
-            case ALL:
+            case all:
                 return categoryMenu.getResponse();
                 break;
         }

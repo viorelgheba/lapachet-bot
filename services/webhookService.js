@@ -26,7 +26,6 @@ WebHookService.prototype = {
                 // Iterate over each messaging event
                 pageEntry.messaging.forEach(function (messagingEvent) {
                     var senderId = messagingEvent.sender.id;
-                    console.info(messagingEvent);
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
@@ -37,7 +36,6 @@ WebHookService.prototype = {
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
-                        console.log('Postback: ', messagingEvent.postback);
                         var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
                         console.log('PostBack Message: ', postBackMsg);
                         facebookApi.sendMessage(senderId, postBackMsg);
