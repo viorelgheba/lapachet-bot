@@ -31,6 +31,7 @@ CategoryMenuResponse.prototype = {
                 }
             }
         };
+        console.log("1st", response);
         if (categories !== undefined) {
             categories.forEach(function (category) {
                 var newButton = {
@@ -41,6 +42,7 @@ CategoryMenuResponse.prototype = {
                 response.attachment.payload.buttons.add(newButton);
             });
         }
+        console.log("2st", response);
         return JSON.stringify(response);
     }
 };
