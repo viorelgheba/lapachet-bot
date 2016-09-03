@@ -1,6 +1,8 @@
 'use strict';
+var apiService = require('../services/apiService').getInstance();
 
 function CategoryMenuResponse() {
+    this._categories = apiService.getProductCategories();
 }
 
 CategoryMenuResponse.prototype = {
@@ -11,13 +13,11 @@ CategoryMenuResponse.prototype = {
                 payload: {
                     template_type: "button",
                     text: "What do you want to do next?",
-                    buttons: [
-                      
-                    ]
+                    buttons: []
                 }
             }
         };
-        console.log("1st", response);
+
         if (categories !== undefined) {
             categories.forEach(function (category) {
                 var newButton = {
@@ -29,7 +29,7 @@ CategoryMenuResponse.prototype = {
                 response.attachment.payload.buttons.push(newButton);
             });
         }
-        console.log("2st", response);
+
         return JSON.stringify(response);
     }
 };
