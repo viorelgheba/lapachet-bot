@@ -27,6 +27,8 @@ WebHookService.prototype = {
 
                 // Iterate over each messaging event
                 pageEntry.messaging.forEach(function (messagingEvent) {
+
+                    console.info("Message", messagingEvent);
                     var senderId = messagingEvent.sender.id;
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
