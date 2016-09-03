@@ -36,6 +36,13 @@ ApiService.prototype = {
 
         return this.request(url, HTTP_REQUEST_GET);
     },
+    getProduct: function (id) {
+        return {
+            id: 1,
+            name: "Produs 1",
+            title: "Titlu produs 1"
+        };
+    },
     getMenusByDate: function (date) {
         var url = MENU_URL.replace('{data}', date);
 
