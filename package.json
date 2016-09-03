@@ -1,7 +1,7 @@
 {
   "name": "lapachetbot",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
@@ -18,8 +18,5 @@
   "engines": {
     "node": "5.0.0",
     "npm": "3.3.6"
-  },
-  "scripts": {
-    "start": "node ./bin/www"
   }
 }
