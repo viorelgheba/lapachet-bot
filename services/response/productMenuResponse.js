@@ -1,34 +1,34 @@
 'use strict';
-var apiService = require('../apiService').getInstance();
-var responsePayload = require('./responsePayload').getInstance();
 
-function CategoryMenuResponse() {
-    this._categories = apiService.getProductCategories();
+var apiService = require('../apiService').getInstance();
+
+function ProductMenuResponse() {
+    this._products = apiService.getProductsByDate();
 }
 
-CategoryMenuResponse.prototype = {
+ProductMenuResponse.prototype = {
     getResponse: function () {
         var response = {
             attachment: {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "What do you want to do next?",
+                    text: "Witch Product do you want?",
                     buttons: []
                 }
             }
         };
 
-        if (this._categories !== undefined) {
-            this._categories.forEach(function (category) {
+        if (this._products !== undefined) {
+            this._products.forEach(function (product) {
                 var newButton = {
                     type: "postback",
-                    title: category.title,
+                    title: product.name,
                     payload: {
                         data: {
-                            id: category.id
+                            id: product.id
                         },
-                        type: "category"
+                        type: "product"
                     }
                 };
 
@@ -41,8 +41,8 @@ CategoryMenuResponse.prototype = {
 };
 
 /**
- * @returns {CategoryMenuResponse}
+ * @returns {ProductMenuResponse}
  */
 module.exports.getInstance = function () {
-    return new CategoryMenuResponse();
+    return new ProductMenuResponse();
 };

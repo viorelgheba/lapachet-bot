@@ -15,6 +15,23 @@ function ApiService() {
 
 ApiService.prototype = {
     getProductsByDate: function (date) {
+        return [
+            {
+                id: 1,
+                name: "Produs 1",
+                title: "Titlu produs 1"
+            },
+            {
+                id: 2,
+                name: "Produs 2",
+                title: "Titlu produs 2"
+            },
+            {
+                id: 3,
+                name: "Produs 3",
+                title: "Titlu produs 3"
+            }
+        ];
         var url = PRODUCTS_URL.replace('{data}', date);
 
         return this.request(url, HTTP_REQUEST_GET);
@@ -27,11 +44,13 @@ ApiService.prototype = {
     getProductCategories: function () {
         return [
             {
+                id: 1,
                 name: "categorie 1",
                 title: "Blab labla 1"
             },
             {
-                name: "cadakjs",
+                id: 2,
+                name: "categorie 2",
                 title: "Titlu"
             }
         ];

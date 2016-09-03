@@ -1,6 +1,7 @@
 'use strict';
 
 var categoryMenu = require('../services/response/categoryMenuResponse').getInstance();
+var productMenu = require('../services/response/productMenuResponse').getInstance();
 var responsePayload = require('../services/response/responsePayload').getInstance();
 
 const MENU = 'menu';
@@ -25,6 +26,9 @@ ResponseFactory.prototype = {
                 break;
             case ALL:
                 return categoryMenu.getResponse();
+                break;
+            case CATEGORY:
+                return productMenu.getResponse();
                 break;
         }
     },
