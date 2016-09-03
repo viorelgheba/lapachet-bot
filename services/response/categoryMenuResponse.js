@@ -4,8 +4,8 @@ function CategoryMenuResponse() {
 }
 
 CategoryMenuResponse.prototype = {
-    getResponse: function () {
-        return JSON.stringify({
+    getResponse: function (categories) {
+        var response = {
             attachment: {
                 type: "template",
                 payload: {
@@ -30,7 +30,18 @@ CategoryMenuResponse.prototype = {
                     ]
                 }
             }
-        });
+        };
+        if (categories !== undefined) {
+            categories.forEach(function (category) {
+                var newButton = {
+                    type: "postback",
+                    title: category.title,
+                    payload: category.name
+                };
+                response.attachment.payload.buttons.add(newButton);
+            });
+        }
+        return JSON.stringify(response);
     }
 };
 

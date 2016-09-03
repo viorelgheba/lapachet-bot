@@ -25,7 +25,17 @@ ApiService.prototype = {
         return this.request(url, HTTP_REQUEST_GET);
     },
     getProductCategories: function () {
-       return this.request(CATEGORIES_URL, HTTP_REQUEST_GET);
+        return [
+            {
+                name: "categorie 1",
+                title: "Blab labla 1"
+            },
+            {
+                name: "cadakjs",
+                title: "Titlu"
+            }
+        ];
+        return this.request(CATEGORIES_URL, HTTP_REQUEST_GET);
     },
     getUrl: function (url) {
         return API_HOST + url;
