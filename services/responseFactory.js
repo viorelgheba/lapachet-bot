@@ -3,6 +3,8 @@
 var categoryMenu = require('../services/response/categoryMenuResponse').getInstance();
 var responsePayload = require('../services/response/responsePayload').getInstance();
 
+const MENU = 'menu';
+const ALL = 'all';
 
 function ResponseFactory() {
 }
