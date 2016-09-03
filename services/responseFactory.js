@@ -16,6 +16,10 @@ ResponseFactory.prototype = {
     getResponse: function (message) {
         var type = message.split('#');
         var id = type[1];
+
+        console.info("type ", type[0]);
+        console.info("id ", id);
+
         switch (type[0]) {
             case MENU:
                 break;
@@ -26,6 +30,7 @@ ResponseFactory.prototype = {
                 return productMenu.getResponse();
                 break;
             case PRODUCT:
+                console.log("GOT PRODUCT!");
                 return checkoutMenu.getResponse(id);
                 break;
         }
