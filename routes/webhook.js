@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var webhook = require('../services/webhookService');
 var facebook = require('../services/facebookService');
+var apiService = require('../services/apiService');
 
 /* GET webhook page. */
 router.get('/', function (req, res) {
@@ -42,6 +43,12 @@ router.post('/', function (req, res) {
 
         res.sendStatus(200);
     }
+});
+
+router.get('/test-api-calls', function (req, res) {
+    var api = new apiService.ApiService();
+
+    res.send(api.request('/test-request/', 'GET'));
 });
 
 module.exports = router;
