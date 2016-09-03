@@ -18,7 +18,6 @@ WebHookService.prototype = {
     },
     handle: function (req) {
         var data = req.body;
-        console.info(data);
         if (data.object == 'page') {
             data.entry.forEach(function (pageEntry) {
                 var pageID = pageEntry.id;
@@ -27,7 +26,7 @@ WebHookService.prototype = {
                 // Iterate over each messaging event
                 pageEntry.messaging.forEach(function (messagingEvent) {
                     var senderId = messagingEvent.sender.id;
-
+                    console.info(messagingEvent);
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
