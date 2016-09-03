@@ -9,12 +9,12 @@ const INSTANCE = new ResponseFactory();
 function ResponseFactory() {}
 
 ResponseFactory.prototype = {
-    getResponse: function (recipientId, message) {
+    getResponse: function (message) {
         switch (message) {
             case MENU:
                 break;
             case ALL:
-                return categoryMenu.getResponse(message);
+                return categoryMenu.getResponse();
                 break;
         }
     }

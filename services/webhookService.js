@@ -31,17 +31,17 @@ WebHookService.prototype = {
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
-                        facebookApi.sendMessage(
-                            senderId,
-                            responseFactory.getResponse(messagingEvent.message.text)
-                        );
+                        console.log('Text: ', messagingEvent.message.text);
+                        var message = responseFactory.getResponse(messagingEvent.message.text);
+                        console.log(message);
+                        facebookApi.sendMessage(senderId, message);
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
-                    } else if (messagingEvent.postback) {
-                        facebookApi.sendMessage(
-                            senderId,
-                            responseFactory.getResponse(messagingEvent.postback.payload)
-                        );
+                    } else if ('Postback: ', messagingEvent.postback) {
+                        console.log(messagingEvent.postback);
+                        var message = responseFactory.getResponse(messagingEvent.postback.payload);
+                        console.log(message);
+                        facebookApi.sendMessage(senderId, message);
                     } else if (messagingEvent.read) {
                         //receivedMessageRead(messagingEvent);
                     } else if (messagingEvent.account_linking) {
