@@ -10,20 +10,32 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    var events = req.body.entry[0].messaging,
-        facebookService = new FacebookService();
+    var facebookService = new FacebookService();
+    var data = req.body;
 
-    console.log(JSON.stringify(req));
+    if (data.object == 'page') {
+        data.entry.forEach(function (pageEntry) {
+            var pageID = pageEntry.id;
+            var timeOfEvent = pageEntry.time;
 
-    for (var i = 0; i < events.length; i++) {
-        var event = events[i];
-        console.log(JSON.stringify(event));
-
-        if (event.message && event.message.text) {
-            facebookService.sendTextMessage(event.sender.id, event.message.text);
-        } else if (event.postback) {
-            console.log("Postback received: " + JSON.stringify(event.postback));
-        }
+            // Iterate over each messaging event
+            pageEntry.messaging.forEach(function (messagingEvent) {
+                if (messagingEvent.message) {
+                    facebookService.sendTextMessage(messagingEvent.sender.id, messagingEvent.message.text);
+                }
+                /*if (messagingEvent.optin) {
+                    receivedAuthentication(messagingEvent);
+                } else if (messagingEvent.message) {
+                    receivedMessage(messagingEvent);
+                } else if (messagingEvent.delivery) {
+                    receivedDeliveryConfirmation(messagingEvent);
+                } else if (messagingEvent.postback) {
+                    receivedPostback(messagingEvent);
+                } else {
+                    console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+                }*/
+            });
+        });
 
         res.sendStatus(200);
     }

@@ -90,4 +90,4 @@ FacebookService.prototype = {
     }
 };
 
-module.exports.facebookService = FacebookService;
+module.exports = FacebookService;
