@@ -24,16 +24,9 @@ ProductMenuResponse.prototype = {
                 var newButton = {
                     type: "postback",
                     title: product.name,
-                    payload: {}
+                    payload: "product#" + product.id
                 };
-                var payload = JSON.stringify({
-                    data: {
-                        id: product.id
-                    },
-                    type: "product"
-                });
 
-                newButton.payload = Buffer.from(payload).toString('base64');
                 response.attachment.payload.buttons.push(newButton);
             });
         }

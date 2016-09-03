@@ -1,6 +1,5 @@
 'use strict';
 var apiService = require('../apiService').getInstance();
-var responsePayload = require('./responsePayload').getInstance();
 
 function CategoryMenuResponse() {
     this._categories = apiService.getProductCategories();
@@ -27,15 +26,7 @@ CategoryMenuResponse.prototype = {
                     payload: {}
                 };
 
-                var payloadJson = JSON.stringify({
-                    data: {
-                        id: category.id
-                    },
-                    type: "product"
-                });
-                console.log(payloadJson);
-                newButton.payload = payloadJson;
-                console.log(newButton.payload);
+                newButton.payload = "category#" + category.id;
                 response.attachment.payload.buttons.push(newButton);
             });
         }
