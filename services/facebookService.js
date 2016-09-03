@@ -90,6 +90,13 @@ FacebookService.prototype = {
                 console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
             } else {
                 console.error("Unable to send message.");
+                if (error) {
+                    console.log('Error sending message: ', error);
+                }
+
+                if (response.body.error) {
+                    console.log('Error: ', response.body.error);
+                }
                 /*console.error(response);
                 console.error(error);*/
             }
