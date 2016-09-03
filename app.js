@@ -9,8 +9,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var webhook = require('./routes/webhook');
 
-var webhookService = require('./services/webhook');.
-
 var app = express();
 
 // view engine setup
