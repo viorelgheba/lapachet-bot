@@ -5,7 +5,8 @@ var categoryMenu = require('../services/response/categoryMenuResponse').getInsta
 const MENU = 'menu';
 const ALL = 'all';
 
-function ResponseFactory() {}
+function ResponseFactory() {
+}
 
 ResponseFactory.prototype = {
     getResponse: function (message) {
@@ -14,6 +15,9 @@ ResponseFactory.prototype = {
                 break;
             case ALL:
                 return categoryMenu.getResponse();
+                break;
+            default:
+                return "dadsasdas";
                 break;
         }
     }
