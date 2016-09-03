@@ -2,18 +2,19 @@
 
 var apiService = require('../apiService').getInstance();
 
-function CheckoutResponse(id) {
-    this._product = apiService.getProduct(id);
+function CheckoutResponse() {
 }
 
 CheckoutResponse.prototype = {
-    getResponse: function () {
+    getResponse: function (id) {
+        var product = apiService.getProduct(id);
+
         var response = {
             attachment: {
                 type: "template",
                 payload: {
                     template_type: "receipt",
-                    recipient_name: this._product.id,
+                    recipient_name: this.product.id,
                     order_number: "12345678902",
                     currency: "USD",
                     payment_method: "Numerar",
@@ -47,7 +48,6 @@ CheckoutResponse.prototype = {
             }
         };
 
-
         console.info(response);
         return JSON.stringify(response);
     }
@@ -56,6 +56,6 @@ CheckoutResponse.prototype = {
 /**
  * @returns {CheckoutResponse}
  */
-module.exports.getInstance = function (id) {
-    return new CheckoutResponse(id);
+module.exports.getInstance = function () {
+    return new CheckoutResponse();
 };
