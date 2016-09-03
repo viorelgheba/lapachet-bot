@@ -1,6 +1,6 @@
 var request = require('request');
 
-const API_HOST = 'https://lapachet-bot.herokuapp.com/';
+const API_HOST = 'https://lapachet-bot.herokuapp.com';
 
 function ApiService() {
 }
