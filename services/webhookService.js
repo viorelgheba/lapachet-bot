@@ -18,7 +18,7 @@ WebHookService.prototype = {
     },
     handle: function (req) {
         var data = req.body;
-
+        console.info(data);
         if (data.object == 'page') {
             data.entry.forEach(function (pageEntry) {
                 var pageID = pageEntry.id;
@@ -40,7 +40,7 @@ WebHookService.prototype = {
                     } else if (messagingEvent.postback) {
                         console.log('Postback: ', messagingEvent.postback);
                         var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
-                        console.log(postBackMsg);
+                        console.log('PostBack Message: ', postBackMsg);
                         facebookApi.sendMessage(senderId, postBackMsg);
                     } else if (messagingEvent.read) {
                         //receivedMessageRead(messagingEvent);
