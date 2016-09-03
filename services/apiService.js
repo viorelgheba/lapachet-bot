@@ -16,7 +16,7 @@ ApiService.prototype = {
 
         return this.request(url, HTTP_REQUEST_GET);
     },
-    getDaliyMenusByDate: function (date) {
+    getMenusByDate: function (date) {
         var url = MENU_URL.replace('{data}', date);
 
         return this.request(url, HTTP_REQUEST_GET);
