@@ -27,14 +27,14 @@ CategoryMenuResponse.prototype = {
                     payload: {}
                 };
 
-                var payload = JSON.stringify({
+                var payloadJson = JSON.stringify({
                     data: {
-                        id: product.id
+                        id: category.id
                     },
                     type: "product"
                 });
-
-                newButton.payload = payload;
+                console.log(payloadJson);
+                newButton.payload = payloadJson;
                 console.log(newButton.payload);
                 response.attachment.payload.buttons.push(newButton);
             });
