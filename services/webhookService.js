@@ -36,6 +36,8 @@ WebHookService.prototype = {
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
+                        console.log('Postback: ', messagingEvent.postback);
+                        console.log('Postback payload: ', messagingEvent.postback.payload);
                         var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
                         console.log('PostBack Message: ', postBackMsg);
                         facebookApi.sendMessage(senderId, postBackMsg);
