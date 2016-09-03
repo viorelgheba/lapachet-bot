@@ -7,15 +7,11 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var webhook = require('./routes/webhook');
-
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-//app services
-app.set('services', path.join(__dirname, 'services'));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -57,6 +53,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
