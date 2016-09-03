@@ -27,6 +27,7 @@ router.post('/', function (req, res) {
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
+                    console.info(JSON.stringify(messagingEvent));
                     facebookService.sendTextMessage(messagingEvent.sender.id, "Postback test");
                     //receivedPostback(messagingEvent);
                 } else if (messagingEvent.read) {
