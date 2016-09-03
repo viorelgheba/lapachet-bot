@@ -10,11 +10,8 @@ function ResponseFactory() {
 }
 
 ResponseFactory.prototype = {
-    getResponse: function (message) {
-        if (message === undefined || message === undefined || message.ask === undefined) {
-            return
-        }
-        responsePayload.setPayload(message);
+    getRootMenuResponse: function (message) {
+        this.loadPayload(message);
 
         switch (responsePayload.getType()) {
             case MENU:
@@ -23,6 +20,17 @@ ResponseFactory.prototype = {
                 return categoryMenu.getResponse();
                 break;
         }
+    },
+    getResponse: function (message) {
+        this.getRootMenuResponse(message);
+    },
+    loadPayload: function (payload) {
+        if (payload === undefined || payload === undefined || payload.type === undefined) {
+
+            return;
+        }
+
+        return responsePayload.setPayload(payload);
     }
 };
 
