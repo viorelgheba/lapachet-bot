@@ -40,7 +40,7 @@ CategoryMenuResponse.prototype = {
                     payload: category.name
                 };
                 console.log("new button", newButton);
-                response.attachment.payload.buttons.add(newButton);
+                response.attachment.payload.buttons.push(newButton);
             });
         }
         console.log("2st", response);
