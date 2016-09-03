@@ -2,8 +2,6 @@
 
 var request = require('request');
 
-const INSTANCE = new FacebookService();
-
 const ATTACHMENT_TYPE_IMAGE = 'image';
 const ATTACHMENT_TYPE_AUDIO = 'audio';
 const ATTACHMENT_TYPE_VIDEO = 'video';
@@ -108,5 +106,5 @@ FacebookService.prototype = {
  * @returns {FacebookService}
  */
 module.exports.getInstance = function () {
-    return INSTANCE;
+    return new FacebookService();
 };

@@ -4,16 +4,15 @@ var categoryMenu = require('../services/response/categoryMenuResponse').getInsta
 
 const MENU = 'menu';
 const ALL = 'all';
-const INSTANCE = new ResponseFactory();
 
 function ResponseFactory() {}
 
 ResponseFactory.prototype = {
     getResponse: function (message) {
         switch (message) {
-            case menu:
+            case MENU:
                 break;
-            case all:
+            case ALL:
                 return categoryMenu.getResponse();
                 break;
         }
@@ -24,5 +23,5 @@ ResponseFactory.prototype = {
  * @returns {ResponseFactory}
  */
 module.exports.getInstance = function () {
-    return INSTANCE;
+    new ResponseFactory();
 };
