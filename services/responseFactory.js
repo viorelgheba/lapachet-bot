@@ -5,7 +5,7 @@ var productMenu = require('../services/response/productMenuResponse').getInstanc
 var checkoutMenu = require('../services/response/checkoutResponse').getInstance();
 var orderMenu = require('../services/response/orderResponse').getInstance();
 var checkOutMenu = require('../services/response/checkoutResponse').getInstance();
-var dailyMenuResponse = require('../services/response/checkoutResponse').getInstance();
+var dailyMenuResponse = require('../services/response/dailyMenuResponse').getInstance();
 
 const MENU = 'menu';
 const ALL = 'all';
