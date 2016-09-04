@@ -15,7 +15,7 @@ ProductMenuResponse.prototype = {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "Witch Product do you want?",
+                    text: "Which Product do you want?",
                     buttons: []
                 }
             }

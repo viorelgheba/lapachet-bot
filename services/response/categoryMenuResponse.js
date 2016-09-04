@@ -11,7 +11,7 @@ CategoryMenuResponse.prototype = {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "Pick a category?",
+                    text: "Pick a category!",
                     buttons: []
                 }
             }

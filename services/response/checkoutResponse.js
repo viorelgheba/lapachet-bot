@@ -34,7 +34,7 @@ CheckoutResponse.prototype = {
                     var newButton = {
                         type: "postback",
                         title: interval.time_start.toString().substring(0, 5) + " - " + interval.time_end.toString().substring(0, 5),
-                        payload: "order#" + product._id + "#" + interval.id
+                        payload: "finish-order#" + product._id + "#" + interval.id
                     };
                     console.info("Interval : ", interval);
                     response.attachment.payload.elements[0].buttons.push(newButton);
