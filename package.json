@@ -14,13 +14,18 @@
   },
   "devDependencies": {
     "jasmine-node": "1.14.5",
-    "jslint": "0.9.6"
+    "jslint": "0.9.6",
+    "qunitjs": "^2.0.1",
+    "grunt": "0.4.4",
+    "grunt-contrib-qunit": "0.4.0",
+    "grunt-contrib-uglify": "0.4.0"
   },
   "engines": {
     "node": "5.0.0",
     "npm": "3.3.6"
   },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "grunt"
   }
 }

@@ -18,6 +18,7 @@ CheckoutResponse.prototype = {
                         {
                             "title": product.name,
                             "image_url": "http://petersapparel.parseapp.com/img/whiteshirt.png",
+                            "subtitle" : product.description,
                             "buttons": [
                                 {
                                     "type": "postback",

@@ -14,13 +14,14 @@ function ResponseFactory() {
 
 ResponseFactory.prototype = {
     getResponse: function (message) {
-        var type = message.split('#');
-        var id = type[1];
+        var messages = message.split('#');
+        var id = messages[1];
+        var type = messages[0];
 
-        console.info("type ", type[0]);
+        console.info("type ", type);
         console.info("id ", id);
 
-        switch (type[0]) {
+        switch (type) {
             case MENU:
                 break;
             case ALL:

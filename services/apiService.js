@@ -14,7 +14,7 @@ function ApiService() {
 }
 
 ApiService.prototype = {
-    getProductsByDate: function (date) {
+    getSellingProducts: function (date) {
         return [
             {
                 id: 1,
@@ -43,12 +43,12 @@ ApiService.prototype = {
             title: "Titlu produs 1"
         };
     },
-    getMenusByDate: function (date) {
+    getSellingMenus: function (date) {
         var url = MENU_URL.replace('{data}', date);
 
         return this.request(url, HTTP_REQUEST_GET);
     },
-    getProductCategories: function () {
+    getSellingProductCategories: function () {
         return [
             {
                 id: 1,

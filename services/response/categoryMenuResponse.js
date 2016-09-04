@@ -2,7 +2,7 @@
 var apiService = require('../apiService').getInstance();
 
 function CategoryMenuResponse() {
-    this._categories = apiService.getProductCategories();
+    this._categories = apiService.getSellingProductCategories();
 }
 
 CategoryMenuResponse.prototype = {

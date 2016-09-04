@@ -3,7 +3,7 @@
 var apiService = require('../apiService').getInstance();
 
 function ProductMenuResponse() {
-    this._products = apiService.getProductsByDate();
+    this._products = apiService.getSellingProducts();
 }
 
 ProductMenuResponse.prototype = {
