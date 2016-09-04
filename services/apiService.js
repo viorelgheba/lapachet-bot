@@ -63,8 +63,9 @@ ApiService.prototype = {
             port: 80,
             method: method
         };
-        request(this.getUrl(url), options, function (error, response, body) {
-            console.info("API CALL TO: ", this.getUrl(url));
+        var requestUrl = this.getUrl(url);
+        request(requestUrl, options, function (error, response, body) {
+            console.info("API CALL TO: ", requestUrl);
             if (!error && response.statusCode === 200) {
                 return body;
             } else {
