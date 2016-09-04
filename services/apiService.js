@@ -65,12 +65,14 @@ ApiService.prototype = {
         var date = new Date().toISOString().replace(/T.+/, '');
         return this.request(
             HTTP_REQUEST_POST,
-            REGISTER_ORDER_URL,
+            this.getUrl(REGISTER_ORDER_URL),
             {
-                userId: userId,
-                productId: productId,
-                intervalId: intervalId,
-                date: date
+                json: {
+                    userId: userId,
+                    productId: productId,
+                    intervalId: intervalId,
+                    date: date
+                }
             }
         );
     }
