@@ -87,13 +87,14 @@ ApiService.prototype = {
         return API_HOST + url;
     },
     request: function (method, url) {
-        console.log(url);
+
         var options = {
             port: 80,
             method: method
         };
         var requestUrl = this.getUrl(url);
         var res = request(HTTP_REQUEST_GET, requestUrl);
+        console.log(requestUrl);
 
         return res.body.toString('utf-8');
     }
