@@ -11,7 +11,6 @@ FinishOrderResponse.prototype = {
         var order = apiService.registerOrder(productId, intervalId, userId);
         console.log(order);
         var response = {
-            message: {
                 attachment: {
                     type: "template",
                     payload: {
@@ -34,7 +33,6 @@ FinishOrderResponse.prototype = {
                         ]
                     }
                 }
-            }
         };
 
         return JSON.stringify(response);
