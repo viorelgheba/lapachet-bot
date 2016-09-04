@@ -12,6 +12,7 @@ const CATEGORY = 'category';
 const PRODUCT = 'product';
 const ORDER_PRODUCT = 'order';
 const CHECKOUT_PRODUCT = 'checkout';
+
 function ResponseFactory() {
 }
 

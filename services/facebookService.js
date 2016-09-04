@@ -102,6 +102,18 @@ FacebookService.prototype = {
                     }
                 }
             });
+    },
+    registerUser: function (userId) {
+        request(
+            {
+                url: process.env.UI_API_URL,
+                qs: {access_token: process.env.API_TOKEN},
+                method: 'POST',
+                json: {
+                    userId: userId
+                }
+            }
+        )
     }
 };
 

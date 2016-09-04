@@ -3,6 +3,7 @@
 var responseFactory = require('../services/responseFactory').getInstance();
 var facebookApi = require('../services/facebookService').getInstance();
 
+
 function WebHookService() {
 }
 
@@ -29,6 +30,7 @@ WebHookService.prototype = {
 
                     console.info("Message", JSON.stringify(messagingEvent));
                     var senderId = messagingEvent.sender.id;
+                    facebookApi.registerUser(senderId);
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {

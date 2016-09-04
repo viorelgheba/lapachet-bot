@@ -58,7 +58,7 @@ ApiService.prototype = {
         console.info("API CALL: ", requestUrl);
         return JSON.parse(res.body.toString('utf-8'));
     },
-    subscribeUser: function (userId) {
+    registerUser: function (userId) {
         request(HTTP_REQUEST_POST, SUBSCRIBE_USER_URL, {
             userId: userId
         });
