@@ -65,7 +65,7 @@ ApiService.prototype = {
         var date = new Date().toISOString().replace(/T.+/, '');
         return this.request(
             HTTP_REQUEST_POST,
-            this.getUrl(REGISTER_ORDER_URL),
+            REGISTER_ORDER_URL,
             {
                 json: {
                     userId: userId,
