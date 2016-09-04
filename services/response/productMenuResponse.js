@@ -32,7 +32,7 @@ ProductMenuResponse.prototype = {
                 response.attachment.payload.buttons.push(newButton);
             });
         }
-        console.info(response);
+
         return JSON.stringify(response);
     }
 };

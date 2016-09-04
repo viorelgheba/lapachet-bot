@@ -55,7 +55,7 @@ ApiService.prototype = {
 
         var requestUrl = this.getUrl(url);
         var res = request(HTTP_REQUEST_GET, requestUrl);
-        console.log(requestUrl);
+        console.info("API CALL: ", requestUrl);
         return JSON.parse(res.body.toString('utf-8'));
     }
 };

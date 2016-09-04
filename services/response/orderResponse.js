@@ -38,8 +38,6 @@ OrderResponse.prototype = {
                 response.attachment.payload.elements.buttons.push(newButton);
             });
         }
-
-        console.info(response);
         return JSON.stringify(response);
     }
 };

@@ -23,21 +23,19 @@ ResponseFactory.prototype = {
         if (messages.length > 1) {
             data = messages[1];
         }
-        console.info("type ", type);
-        console.info("id ", data);
+        console.info("Request Type ", type);
+        console.info("Request Data ", data);
 
         switch (type) {
             case MENU:
                 break;
             case ALL:
-                console.info("step:", ALL);
                 return categoryMenu.getResponse();
                 break;
             case CATEGORY:
                 return productMenu.getResponse(data);
                 break;
             case PRODUCT:
-                console.log("GOT PRODUCT!");
                 return checkoutMenu.getResponse(data[0]);
                 break;
             case ORDER_PRODUCT:

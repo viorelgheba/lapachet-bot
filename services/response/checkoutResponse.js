@@ -31,7 +31,6 @@ CheckoutResponse.prototype = {
             }
         };
 
-        console.info(response);
         return JSON.stringify(response);
     }
 };

@@ -17,10 +17,9 @@ CategoryMenuResponse.prototype = {
             }
         };
         var categories = apiService.getSellingProductCategories();
-        console.log(categories);
         if (categories !== undefined) {
             categories.forEach(function (category) {
-                console.info("category", category);
+
                 var newButton = {
                     type: "postback",
                     title: category.name,
@@ -31,7 +30,6 @@ CategoryMenuResponse.prototype = {
                 response.attachment.payload.buttons.push(newButton);
             });
         }
-        console.info("RESPONSE", response);
         return JSON.stringify(response);
     }
 };

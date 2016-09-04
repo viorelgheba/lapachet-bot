@@ -19,7 +19,6 @@ WebHookService.prototype = {
     },
     handle: function (req) {
         var data = req.body;
-        console.info(data);
         if (data.object == 'page') {
             data.entry.forEach(function (pageEntry) {
                 var pageID = pageEntry.id;
