@@ -20,7 +20,7 @@ FinishOrderResponse.prototype = {
                     currency: "USD",
                     payment_method: "Visa 2345",
                     order_url: "http://petersapparel.parseapp.com/order?order_id=123456",
-                    timestamp: "1428444852",
+                    timestamp: new Date().getTime(),
                     elements: [
                         {
                             "title": product.name,
@@ -30,7 +30,13 @@ FinishOrderResponse.prototype = {
                             "currency": "RON",
                             "image_url": product.image
                         }
-                    ]
+                    ],
+                    summary: {
+                        subtotal: product.base_price,
+                        shipping_cost: 0,
+                        total_tax: product.base_price / 0.24,
+                        total_cost: product.base_price
+                    },
                 }
             }
         };
