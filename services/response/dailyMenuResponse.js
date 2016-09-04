@@ -8,7 +8,9 @@ function DailyMenuResponse() {
 
 DailyMenuResponse.prototype = {
     getResponse: function () {
-        var products = apiService.getSellingMenus(categoryId);
+        var date = new Date().toISOString().replace(/T.+/, '');
+        var products = apiService.getSellingMenus(date);
+
         var response = {
             attachment: {
                 type: "template",
