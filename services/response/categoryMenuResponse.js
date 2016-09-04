@@ -20,6 +20,7 @@ CategoryMenuResponse.prototype = {
 
         if (this._categories !== undefined) {
             this._categories.forEach(function (category) {
+                console.info("category", category);
                 var newButton = {
                     type: "postback",
                     title: category.name,
