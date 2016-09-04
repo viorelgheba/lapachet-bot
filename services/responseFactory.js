@@ -18,11 +18,8 @@ function ResponseFactory() {
 }
 
 ResponseFactory.prototype = {
-    getResponse: function (messageEvent) {
-        var message = messageEvent.message.text;
-        console.log("GOT MSG:", message);
-        var senderId = messageEvent.sender.id;
-        console.log("GOT userId:", senderId);
+    getResponse: function (message, senderId) {
+
         var messages = message.split('#');
 
         var type = messages[0];

@@ -33,7 +33,7 @@ WebHookService.prototype = {
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
-                        var msg = responseFactory.getResponse(messagingEvent);
+                        var msg = responseFactory.getResponse(messageEvent.message.text, senderId);
                         console.log("MSG : ", msg);
                         if (postBackMsg !== undefined) {
                             facebookApi.sendMessage(senderId, msg);
@@ -45,7 +45,7 @@ WebHookService.prototype = {
                         facebookApi.registerUser(messagingEvent.sender.id);
                         var payload = messagingEvent.postback.payload;
                         console.log("PayLoad", payload);
-                        var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
+                        var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload, senderId);
                         if (postBackMsg !== undefined) {
                             facebookApi.sendMessage(senderId, postBackMsg);
                         }
