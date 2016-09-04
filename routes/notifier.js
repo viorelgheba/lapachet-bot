@@ -10,6 +10,7 @@ router.post('/', function (req, res) {
     if (access_token != process.env.API_TOKEN) {
         res.send("Invalid token!");
     }
+    res.send("Ok");
 });
 
 module.exports = router;
