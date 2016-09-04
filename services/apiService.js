@@ -68,7 +68,7 @@ ApiService.prototype = {
             if (!error && response.statusCode === 200) {
                 return body;
             } else {
-                console.log(error);
+                console.error(error);
             }
         });
     }
