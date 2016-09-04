@@ -8,7 +8,7 @@ const API_HOST = 'https://lapachet-app.herokuapp.com/api';
 const PRODUCTS_URL = '/category_products?date={date}&categoryId={categoryId}';
 const MENU_URL = '/menus/{date}';
 const CATEGORIES_URL = '/categories/daily?date={date}';
-const INTERVALS_URL = '/categories/intervals';
+const INTERVALS_URL = '/intervals?date={date}';
 
 const HTTP_REQUEST_GET = 'GET';
 const HTTP_REQUEST_POST = 'POST';
@@ -43,30 +43,10 @@ ApiService.prototype = {
         return this.request(HTTP_REQUEST_GET, url);
     },
     getIntervals: function () {
-
-        return [
-            {
-                id: 1,
-                start: 19,
-                end: 20
-            },
-            {
-                id: 2,
-                start: 20,
-                end: 21
-            },
-            {
-                id: 3,
-                start: 21,
-                end: 22
-            },
-            {
-                id: 4,
-                start: 22,
-                end: 23
-            }
-        ];
-        return this.request(INTERVALS_URL, HTTP_REQUEST_GET);
+        var date = new Date().toISOString().replace(/T.+/, '');
+        var url = INTERVALS_URL.replace('{date}', date);
+        
+        return this.request(url, HTTP_REQUEST_GET);
     },
     getUrl: function (url) {
         return API_HOST + url;
