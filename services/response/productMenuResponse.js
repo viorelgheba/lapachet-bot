@@ -22,14 +22,17 @@ ProductMenuResponse.prototype = {
         };
 
         if (products !== undefined) {
+            var productNo = 0;
             products.forEach(function (product) {
-                var newButton = {
-                    type: "postback",
-                    title: product.name,
-                    payload: "product#" + product._id
-                };
+                if (productNo < 3) {
+                    var newButton = {
+                        type: "postback",
+                        title: product.name,
+                        payload: "product#" + product._id
+                    };
 
-                response.attachment.payload.buttons.push(newButton);
+                    response.attachment.payload.buttons.push(newButton);
+                }
             });
         }
 
