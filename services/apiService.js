@@ -22,7 +22,7 @@ ApiService.prototype = {
         var url = PRODUCTS_URL.replace('{date}', date);
         url = url.replace('{categoryId}', categoryId);
 
-        return this.request(url, HTTP_REQUEST_GET);
+        return this.request(HTTP_REQUEST_GET, url);
     },
     getProduct: function (id) {
         return {
