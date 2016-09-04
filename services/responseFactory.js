@@ -4,7 +4,6 @@ var categoryMenu = require('../services/response/categoryMenuResponse').getInsta
 var productMenu = require('../services/response/productMenuResponse').getInstance();
 var checkoutMenu = require('../services/response/checkoutResponse').getInstance();
 var orderMenu = require('../services/response/orderResponse').getInstance();
-var checkOutMenu = require('../services/response/checkoutResponse').getInstance();
 var dailyMenuResponse = require('../services/response/dailyMenuResponse').getInstance();
 var finishOrderMenu = require('../services/response/finishOrderResponse').getInstance();
 

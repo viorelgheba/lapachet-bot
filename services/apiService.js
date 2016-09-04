@@ -60,13 +60,6 @@ ApiService.prototype = {
         console.info("API CALL: ", requestUrl);
         return JSON.parse(res.body.toString('utf-8'));
     },
-    registerUser: function (userId) {
-        request(HTTP_REQUEST_POST, SUBSCRIBE_USER_URL, {
-            userId: userId
-        });
-
-        return;
-    },
     registerOrder: function (productId, intervalId, userId) {
         var date = new Date().toISOString().replace(/T.+/, '');
         var res = this.request(
