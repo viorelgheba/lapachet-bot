@@ -10,7 +10,8 @@ const PRODUCT_URL = '/products/{productId}';
 const MENU_URL = '/products_menus?date={date}';
 const CATEGORIES_URL = '/categories/daily?date={date}';
 const INTERVALS_URL = '/intervals?date={date}';
-const SUBSCRIBE_USER_URL = '/users'
+const SUBSCRIBE_USER_URL = '/users';
+const REGISTER_ORDER_URL = '/sales';
 
 const HTTP_REQUEST_GET = 'GET';
 const HTTP_REQUEST_POST = 'POST';
@@ -51,10 +52,11 @@ ApiService.prototype = {
     getUrl: function (url) {
         return API_HOST + url;
     },
-    request: function (method, url) {
+    request: function (method, url, options) {
 
         var requestUrl = this.getUrl(url);
-        var res = request(HTTP_REQUEST_GET, requestUrl);
+        var res = request(method, requestUrl, options);
+
         console.info("API CALL: ", requestUrl);
         return JSON.parse(res.body.toString('utf-8'));
     },
@@ -64,6 +66,21 @@ ApiService.prototype = {
         });
 
         return;
+    },
+    registerOrder: function (productId, intervalId, userId) {
+        var date = new Date().toISOString().replace(/T.+/, '');
+        var res = this.request(
+            HTTP_REQUEST_POST,
+            REGISTER_ORDER_URL,
+            {
+                userId: userId,
+                productId: productId,
+                intervalId: intervalId,
+                date: date
+            }
+        );
+
+        return JSON.parse(res.body.toString('utf-8'));
     }
 };
 
