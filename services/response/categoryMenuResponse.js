@@ -17,7 +17,7 @@ CategoryMenuResponse.prototype = {
             }
         };
         var categories = apiService.getSellingProductCategories();
-
+        console.log(categories);
         if (categories !== undefined) {
             categories.forEach(function (category) {
                 console.info("category", category);

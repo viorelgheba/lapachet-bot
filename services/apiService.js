@@ -91,8 +91,7 @@ ApiService.prototype = {
         var requestUrl = this.getUrl(url);
         var res = request(HTTP_REQUEST_GET, requestUrl);
         console.log(requestUrl);
-        console.log(res.body.toString('utf-8'));
-        return res.body.toString('utf-8');
+        return JSON.parse(res.body.toString('utf-8'));
     }
 };
 
