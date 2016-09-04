@@ -49,9 +49,10 @@ ApiService.prototype = {
         return this.request(url, HTTP_REQUEST_GET);
     },
     getSellingProductCategories: function () {
-        var date = new Date();
-        var url = CATEGORIES_URL.replace('{data}', date.format("%Y-%m-%d"));
-        
+        var date = new Date().toISOString().replace(/T+/, ' ');
+        console.info("Today date: ", date);
+        var url = CATEGORIES_URL.replace('{data}', date);
+
         return this.request(url, HTTP_REQUEST_GET);
     },
     getUrl: function (url) {
@@ -63,6 +64,7 @@ ApiService.prototype = {
             method: method
         };
         request(this.getUrl(url), options, function (error, response, body) {
+            console.info("API CALL TO: ", url);
             if (!error && response.statusCode === 200) {
                 return body;
             } else {
