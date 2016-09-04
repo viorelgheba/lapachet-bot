@@ -14,9 +14,18 @@ router.post('/', function (req, res) {
     console.log(body);
     body.users.forEach(function (user) {
         console.log("Sending Message to userId: " + user);
+        var message = {
+            recipient: {
+                id: user
+            },
+            message: {
+                "text": "We got food supply :), please use this bot Menu!"
+            }
+        };
+        facebookApi.sendMessage(user, message);
+    });
 
-        facebookApi.sendMessage(user, "We got food supply :), please use this bot Menu");
-    })
+    res.send("All send!");
 });
 
 module.exports = router;
