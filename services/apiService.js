@@ -10,6 +10,7 @@ const PRODUCT_URL = '/products/{productId}';
 const MENU_URL = '/menus/{date}';
 const CATEGORIES_URL = '/categories/daily?date={date}';
 const INTERVALS_URL = '/intervals?date={date}';
+const SUBSCRIBE_USER_URL = ''
 
 const HTTP_REQUEST_GET = 'GET';
 const HTTP_REQUEST_POST = 'POST';
@@ -56,6 +57,10 @@ ApiService.prototype = {
         var res = request(HTTP_REQUEST_GET, requestUrl);
         console.info("API CALL: ", requestUrl);
         return JSON.parse(res.body.toString('utf-8'));
+    },
+    subscribeUser: function (userId) {
+
+
     }
 };
 

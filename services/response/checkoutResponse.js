@@ -28,14 +28,18 @@ CheckoutResponse.prototype = {
         };
 
         if (intervals !== undefined) {
+            var intervalNo = 0;
             intervals.forEach(function (interval) {
-                var newButton = {
-                    type: "postback",
-                    title: interval.time_start + interval.time_end,
-                    payload: "order#" + product._id + "#" + interval.id
-                };
-                console.info("Interval : ", interval);
-                response.attachment.payload.elements.buttons.push(newButton);
+                if (intervalNo < 3) {
+                    var newButton = {
+                        type: "postback",
+                        title: interval.time_start + interval.time_end,
+                        payload: "order#" + product._id + "#" + interval.id
+                    };
+                    console.info("Interval : ", interval);
+                    response.attachment.payload.elements.buttons.push(newButton);
+                    intervalNo++;
+                }
             });
         }
         return JSON.stringify(response);
