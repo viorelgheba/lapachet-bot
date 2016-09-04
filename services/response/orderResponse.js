@@ -2,12 +2,13 @@
 
 var apiService = require('../apiService').getInstance();
 
-function CheckoutResponse() {
+function OrderResponse() {
 }
 
-CheckoutResponse.prototype = {
+OrderResponse.prototype = {
     getResponse: function (id) {
         var product = apiService.getProduct(id);
+        var intervals = apiService.getIntervals();
 
         var response = {
             attachment: {
@@ -16,21 +17,27 @@ CheckoutResponse.prototype = {
                     template_type: "generic",
                     elements: [
                         {
-                            "title": product.name,
-                            "image_url": "http://petersapparel.parseapp.com/img/whiteshirt.png",
-                            "subtitle" : product.description,
-                            "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Order Product",
-                                    "payload": "order#" + product.id
-                                }
-                            ]
+                            title: product.name,
+                            image_url: product.image,
+                            subtitle: product.description,
+                            buttons: []
                         }
                     ]
                 }
             }
         };
+
+        if (intervals !== undefined) {
+            intervals.forEach(function (interval) {
+                var newButton = {
+                    type: "postback",
+                    title: interval.start + interval.end,
+                    payload: "order#" + product.id + "#" + interval.id
+                };
+
+                response.attachment.payload.elements.buttons.push(newButton);
+            });
+        }
 
         console.info(response);
         return JSON.stringify(response);
@@ -38,8 +45,8 @@ CheckoutResponse.prototype = {
 };
 
 /**
- * @returns {CheckoutResponse}
+ * @returns {OrderResponse}
  */
 module.exports.getInstance = function () {
-    return new CheckoutResponse();
+    return new OrderResponse();
 };

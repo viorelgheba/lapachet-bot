@@ -3,11 +3,13 @@
 var categoryMenu = require('../services/response/categoryMenuResponse').getInstance();
 var productMenu = require('../services/response/productMenuResponse').getInstance();
 var checkoutMenu = require('../services/response/checkoutResponse').getInstance();
+var orderMenu = require('../services/response/orderResponse').getInstance();
 
 const MENU = 'menu';
 const ALL = 'all';
 const CATEGORY = 'category';
 const PRODUCT = 'product';
+const ORDER_PRODUCT = 'order';
 
 function ResponseFactory() {
 }
@@ -15,11 +17,11 @@ function ResponseFactory() {
 ResponseFactory.prototype = {
     getResponse: function (message) {
         var messages = message.split('#');
-        var id = messages[1];
+        var data = messages[1];
         var type = messages[0];
 
         console.info("type ", type);
-        console.info("id ", id);
+        console.info("id ", data);
 
         switch (type) {
             case MENU:
@@ -32,7 +34,10 @@ ResponseFactory.prototype = {
                 break;
             case PRODUCT:
                 console.log("GOT PRODUCT!");
-                return checkoutMenu.getResponse(id);
+                return checkoutMenu.getResponse(data[0]);
+                break;
+            case ORDER_PRODUCT:
+                return orderMenu.getResponse(data[0]);
                 break;
         }
     }
