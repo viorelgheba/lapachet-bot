@@ -32,7 +32,7 @@ ApiService.prototype = {
         return this.request(HTTP_REQUEST_GET, url);
     },
     getSellingMenus: function (date) {
-        var url = MENU_URL.replace('{data}', date);
+        var url = MENU_URL.replace('{date}', date);
 
         return this.request(HTTP_REQUEST_GET, url);
     },
