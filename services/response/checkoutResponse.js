@@ -7,7 +7,7 @@ function CheckoutResponse() {
 
 CheckoutResponse.prototype = {
     getResponse: function (productId) {
-        var product = apiService.getProduct(id);
+        var product = apiService.getProduct(productId);
         var intervals = apiService.getIntervals();
 
         var response = {
@@ -32,7 +32,7 @@ CheckoutResponse.prototype = {
                 var newButton = {
                     type: "postback",
                     title: interval.time_start + interval.time_end,
-                    payload: "order#" + product.id + "#" + interval.id
+                    payload: "order#" + product._id + "#" + interval.id
                 };
 
                 response.attachment.payload.elements.buttons.push(newButton);
