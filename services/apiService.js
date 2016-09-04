@@ -62,7 +62,7 @@ ApiService.prototype = {
     },
     registerOrder: function (productId, intervalId, userId) {
         var date = new Date().toISOString().replace(/T.+/, '');
-        var res = this.request(
+        return this.request(
             HTTP_REQUEST_POST,
             REGISTER_ORDER_URL,
             {
@@ -72,8 +72,6 @@ ApiService.prototype = {
                 date: date
             }
         );
-
-        return JSON.parse(res.body.toString('utf-8'));
     }
 };
 
