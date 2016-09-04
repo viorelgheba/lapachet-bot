@@ -10,7 +10,7 @@ router.post('/', function (req, res) {
     if (access_token !== process.env.API_TOKEN) {
         res.send("Invalid token!");
     }
-    var users = JSON.parse(req.query['users']);
+    var users = req.body;
     console.log(users);
     users.forEach(function (user) {
         console.log("Sending Message to userId: " + user);
