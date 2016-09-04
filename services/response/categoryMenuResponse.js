@@ -30,7 +30,7 @@ CategoryMenuResponse.prototype = {
                 response.attachment.payload.buttons.push(newButton);
             });
         }
-        console.info(response);
+        console.info("RESPONSE", response);
         return JSON.stringify(response);
     }
 };
