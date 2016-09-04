@@ -22,7 +22,7 @@ CheckoutResponse.prototype = {
                                 {
                                     "type": "postback",
                                     "title": "Order Product",
-                                    "payload": "order#" + product.id
+                                    "payload": "order#" + product._id
                                 }
                             ]
                         }

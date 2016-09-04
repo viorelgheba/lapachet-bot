@@ -32,7 +32,6 @@ WebHookService.prototype = {
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
-                        console.log('Text: ', messagingEvent.message.text);
                         var msg = responseFactory.getResponse(messagingEvent.message.text);
                         if (postBackMsg !== undefined) {
                             facebookApi.sendMessage(senderId, msg);

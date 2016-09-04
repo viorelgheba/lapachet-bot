@@ -23,8 +23,8 @@ ResponseFactory.prototype = {
         if (messages.length > 1) {
             data = messages[1];
         }
-        console.info("Request Type ", type);
-        console.info("Request Data ", data);
+        console.info("Request Type : ", type);
+        console.info("Request Data : ", data);
 
         switch (type) {
             case MENU:

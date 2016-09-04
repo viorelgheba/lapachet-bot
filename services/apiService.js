@@ -27,7 +27,7 @@ ApiService.prototype = {
     },
     getProduct: function (productId) {
         var url = PRODUCT_URL.replace('{productId}', productId);
-        
+
         return this.request(url, url);
     },
     getSellingMenus: function (date) {
