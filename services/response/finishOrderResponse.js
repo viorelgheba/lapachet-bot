@@ -9,13 +9,13 @@ FinishOrderResponse.prototype = {
     getResponse: function (productId, intervalId, userId) {
         var product = apiService.getProduct(productId);
         var order = apiService.registerOrder(productId, intervalId, userId);
-        console.log(order);
+        console.log("Saved order: ", order);
         var response = {
                 attachment: {
                     type: "template",
                     payload: {
                         template_type: "receipt",
-                        recipient_name: userId,
+                        recipient_name: userId.toString(),
                         order_number: order.orderId,
                         currency: "USD",
                         payment_method: "Visa 2345",
