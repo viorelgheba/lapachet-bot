@@ -11,26 +11,28 @@ FinishOrderResponse.prototype = {
         var order = apiService.registerOrder(productId, intervalId, userId);
         console.log(order);
         var response = {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "receipt",
-                    recipient_name: userId,
-                    order_number: order.orderId,
-                    currency: "USD",
-                    payment_method: "Visa 2345",
-                    order_url: "http://petersapparel.parseapp.com/order?order_id=123456",
-                    timestamp: "1428444852",
-                    elements: [
-                        {
-                            "title": product.name,
-                            "subtitle": product.description,
-                            "quantity": 1,
-                            "price": product.price,
-                            "currency": "RON",
-                            "image_url": product.image
-                        }
-                    ]
+            message: {
+                attachment: {
+                    type: "template",
+                    payload: {
+                        template_type: "receipt",
+                        recipient_name: userId,
+                        order_number: order.orderId,
+                        currency: "USD",
+                        payment_method: "Visa 2345",
+                        order_url: "http://petersapparel.parseapp.com/order?order_id=123456",
+                        timestamp: "1428444852",
+                        elements: [
+                            {
+                                "title": product.name,
+                                "subtitle": product.description,
+                                "quantity": 1,
+                                "price": product.price,
+                                "currency": "RON",
+                                "image_url": product.image
+                            }
+                        ]
+                    }
                 }
             }
         };
