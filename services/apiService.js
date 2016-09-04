@@ -58,7 +58,6 @@ ApiService.prototype = {
         var res = request(method, requestUrl, options);
 
         console.info("API CALL: ", requestUrl);
-        console.info("XXXXXXXXXXXX ", res.body);
         return JSON.parse(res.body.toString('utf-8'));
     },
     registerOrder: function (productId, intervalId, userId) {
