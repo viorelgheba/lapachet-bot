@@ -51,7 +51,7 @@ ApiService.prototype = {
     getSellingProductCategories: function () {
         var date = new Date().toISOString().replace(/T.+/, ' ');
         console.info("Today date: ", date);
-        var url = CATEGORIES_URL.replace('{data}', date);
+        var url = CATEGORIES_URL.replace('{date}', date);
 
         return this.request(url, HTTP_REQUEST_GET);
     },
