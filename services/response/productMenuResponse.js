@@ -26,7 +26,6 @@ ProductMenuResponse.prototype = {
                 var newButton = {
                     type: "postback",
                     title: product.name,
-                    subtitle: product.description,
                     payload: "product#" + product._id
                 };
 
