@@ -34,7 +34,7 @@ CheckoutResponse.prototype = {
                     title: interval.time_start + interval.time_end,
                     payload: "order#" + product._id + "#" + interval.id
                 };
-
+                console.info("Interval : ", interval);
                 response.attachment.payload.elements.buttons.push(newButton);
             });
         }
