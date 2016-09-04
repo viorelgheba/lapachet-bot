@@ -64,7 +64,7 @@ ApiService.prototype = {
             method: method
         };
         request(this.getUrl(url), options, function (error, response, body) {
-            console.info("API CALL TO: ", url);
+            console.info("API CALL TO: ", this.getUrl(url));
             if (!error && response.statusCode === 200) {
                 return body;
             } else {
