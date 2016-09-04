@@ -1,6 +1,6 @@
 'use strict';
 
-var request = require('request');
+var request = require('sync-request');
 
 //de modificat
 //const API_HOST = process.env.UI_API_URL;
@@ -56,7 +56,7 @@ ApiService.prototype = {
         console.info("Today date: ", date);
         var url = CATEGORIES_URL.replace('{date}', date);
 
-        return this.request(url, HTTP_REQUEST_GET);
+        return this.request(HTTP_REQUEST_GET, url);
     },
     getIntervals: function () {
 
@@ -93,14 +93,17 @@ ApiService.prototype = {
             method: method
         };
         var requestUrl = this.getUrl(url);
-        request(requestUrl, options, function (error, response, body) {
-            console.info("API CALL TO: ", requestUrl);
-            if (!error && response.statusCode === 200) {
-                return body;
-            } else {
-                console.error(error);
-            }
-        });
+        var res = request(method, url);
+
+        return res.getBody('utf8');
+        // request(requestUrl, options, function (error, response, body) {
+        //     console.info("API CALL TO: ", requestUrl);
+        //     if (!error && response.statusCode === 200) {
+        //         return body;
+        //     } else {
+        //         console.error(error);
+        //     }
+        // });
     }
 };
 
