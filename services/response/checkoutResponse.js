@@ -33,7 +33,7 @@ CheckoutResponse.prototype = {
                 if (intervalNo < 3) {
                     var newButton = {
                         type: "postback",
-                        title: "Interval" + interval.time_start.toString() + interval.time_end.toString(),
+                        title: "Interval " + interval.time_start.toString(5) + " - " + interval.time_end.toString(),
                         payload: "order#" + product._id + "#" + interval.id
                     };
                     console.info("Interval : ", interval);

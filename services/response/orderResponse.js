@@ -31,7 +31,7 @@ OrderResponse.prototype = {
                 var newButton = {
                     type: "postback",
                     title: interval.start + interval.end,
-                    payload: "order#" + product.id + "#" + interval._id
+                    payload: "finish-order#" + product._id + "#" + interval._id
                 };
 
                 response.attachment.payload.elements.buttons.push(newButton);
