@@ -3,7 +3,6 @@ var apiService = require('../apiService').getInstance();
 
 function CategoryMenuResponse() {
     this._categories = apiService.getSellingProductCategories();
-    console.info("CATEGORIES", this._categories);
 }
 
 CategoryMenuResponse.prototype = {
@@ -18,7 +17,7 @@ CategoryMenuResponse.prototype = {
                 }
             }
         };
-
+        console.log("Category 1st response", response);
         if (this._categories !== undefined) {
             this._categories.forEach(function (category) {
                 console.info("category", category);
