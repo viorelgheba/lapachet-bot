@@ -34,7 +34,7 @@ FinishOrderResponse.prototype = {
                     summary: {
                         subtotal: parseFloat(product.base_price),
                         shipping_cost: 0.00,
-                        total_tax: parseFloat(product.base_price / 0.24),
+                        total_tax: parseFloat(product.base_price) - parseFloat(product.base_price / 1.24),
                         total_cost: parseFloat(product.base_price)
                     },
                 }
