@@ -6,8 +6,9 @@ function CheckoutResponse() {
 }
 
 CheckoutResponse.prototype = {
-    getResponse: function (id) {
+    getResponse: function (productId) {
         var product = apiService.getProduct(id);
+        var intervals = apiService.getIntervals();
 
         var response = {
             attachment: {
@@ -16,21 +17,27 @@ CheckoutResponse.prototype = {
                     template_type: "generic",
                     elements: [
                         {
-                            "title": product.name,
-                            "image_url": product.image,
-                            "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Order Product",
-                                    "payload": "checkout#" + product._id
-                                }
-                            ]
+                            title: product.name,
+                            image_url: product.image,
+                            subtitle: product.description,
+                            buttons: []
                         }
                     ]
                 }
             }
         };
 
+        if (intervals !== undefined) {
+            intervals.forEach(function (interval) {
+                var newButton = {
+                    type: "postback",
+                    title: interval.time_start + interval.time_end,
+                    payload: "order#" + product.id + "#" + interval.id
+                };
+
+                response.attachment.payload.elements.buttons.push(newButton);
+            });
+        }
         return JSON.stringify(response);
     }
 };

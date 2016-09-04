@@ -8,7 +8,6 @@ function OrderResponse() {
 OrderResponse.prototype = {
     getResponse: function (id) {
         var product = apiService.getProduct(id);
-        var intervals = apiService.getIntervals();
 
         var response = {
             attachment: {

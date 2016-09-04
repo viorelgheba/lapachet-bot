@@ -4,13 +4,14 @@ var categoryMenu = require('../services/response/categoryMenuResponse').getInsta
 var productMenu = require('../services/response/productMenuResponse').getInstance();
 var checkoutMenu = require('../services/response/checkoutResponse').getInstance();
 var orderMenu = require('../services/response/orderResponse').getInstance();
+var checkOutMenu = require('../services/response/checkoutResponse').getInstance();
 
 const MENU = 'menu';
 const ALL = 'all';
 const CATEGORY = 'category';
 const PRODUCT = 'product';
 const ORDER_PRODUCT = 'order';
-
+const CHECKOUT_PRODUCT = 'checkout';
 function ResponseFactory() {
 }
 
@@ -40,6 +41,9 @@ ResponseFactory.prototype = {
                 break;
             case ORDER_PRODUCT:
                 return orderMenu.getResponse(data[0]);
+                break;
+            case CHECKOUT_PRODUCT:
+                return checkOutMenu.getResponse(data[0]);
                 break;
         }
     }
