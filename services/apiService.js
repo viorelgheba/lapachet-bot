@@ -5,7 +5,7 @@ var request = require('request');
 const API_HOST = process.env.UI_API_URL;
 const PRODUCTS_URL = '/products/{date}';
 const MENU_URL = '/menus/{date}';
-const CATEGORIES_URL = '/categories';
+const CATEGORIES_URL = '/api/categories/daily?date={date}';
 
 const HTTP_REQUEST_GET = 'GET';
 const HTTP_REQUEST_POST = 'POST';
@@ -49,19 +49,10 @@ ApiService.prototype = {
         return this.request(url, HTTP_REQUEST_GET);
     },
     getSellingProductCategories: function () {
-        return [
-            {
-                id: 1,
-                name: "categorie 1",
-                title: "Blab labla 1"
-            },
-            {
-                id: 2,
-                name: "categorie 2",
-                title: "Titlu"
-            }
-        ];
-        return this.request(CATEGORIES_URL, HTTP_REQUEST_GET);
+        var date = new Date();
+        var url = CATEGORIES_URL.replace('{data}', date.format("%Y-%m-%d"));
+        
+        return this.request(url, HTTP_REQUEST_GET);
     },
     getUrl: function (url) {
         return API_HOST + url;
