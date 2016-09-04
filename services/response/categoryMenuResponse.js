@@ -21,7 +21,7 @@ CategoryMenuResponse.prototype = {
         if (categories !== undefined) {
             var categoriesNo = 0;
             categories.forEach(function (category) {
-                if (categoriesNo < 3) {
+                if (categoriesNo < 4) {
                     var newButton = {
                         type: "postback",
                         title: category.name,
