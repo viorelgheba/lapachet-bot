@@ -42,9 +42,6 @@ ResponseFactory.prototype = {
             case ORDER_PRODUCT:
                 return orderMenu.getResponse(data[0]);
                 break;
-            case CHECKOUT_PRODUCT:
-                return checkOutMenu.getResponse(data[0]);
-                break;
         }
     }
 };
