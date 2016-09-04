@@ -27,7 +27,7 @@ ResponseFactory.prototype = {
             case MENU:
                 break;
             case ALL:
-                console.info("step:", ALL)
+                console.info("step:", ALL);
                 return categoryMenu.getResponse();
                 break;
             case CATEGORY:
