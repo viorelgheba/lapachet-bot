@@ -7,7 +7,7 @@ var facebookApi = require('../services/facebookService').getInstance();
 
 router.post('/', function (req, res) {
     var access_token = req.query['access_token'];
-    if (access_token != process.env.API_TOKEN) {
+    if (access_token !== process.env.API_TOKEN) {
         res.send("Invalid token!");
     }
     var users = JSON.parse(req.query['users']);
