@@ -7,7 +7,6 @@ function FinishOrderResponse() {
 
 FinishOrderResponse.prototype = {
     getResponse: function (productId, intervalId, userId) {
-        console.log("FINISHED");
         var product = apiService.getProduct(productId);
         var order = apiService.registerOrder(productId, intervalId, userId);
 

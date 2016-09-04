@@ -11,7 +11,6 @@ router.post('/', function (req, res) {
         res.send("Invalid token!");
     }
     var body = req.body;
-    console.log(body);
     body.users.forEach(function (user) {
         console.log("Sending Message to userId: " + user);
         facebookApi.sendTextMessage(user, "We got food supply :), please use this bot Menu!");
