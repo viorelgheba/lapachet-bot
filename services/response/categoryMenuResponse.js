@@ -19,16 +19,19 @@ CategoryMenuResponse.prototype = {
         var categories = apiService.getSellingProductCategories();
         console.info("Categories: ", JSON.stringify(categories));
         if (categories !== undefined) {
+            var categoriesNo = 0;
             categories.forEach(function (category) {
-
-                var newButton = {
-                    type: "postback",
-                    title: category.name,
-                    payload: {}
-                };
-                console.info("Category: ", JSON.stringify(category));
-                newButton.payload = "category#" + category._id;
-                response.attachment.payload.buttons.push(newButton);
+                if (categoriesNo < 3) {
+                    var newButton = {
+                        type: "postback",
+                        title: category.name,
+                        payload: {}
+                    };
+                    console.info("Category: ", JSON.stringify(category));
+                    newButton.payload = "category#" + category._id;
+                    response.attachment.payload.buttons.push(newButton);
+                    categoriesNo++;
+                }
             });
         }
         return JSON.stringify(response);
