@@ -53,17 +53,14 @@ ApiService.prototype = {
         return API_HOST + url;
     },
     request: function (method, url, options) {
-
         var requestUrl = this.getUrl(url);
         var res = request(method, requestUrl, options);
 
-        console.info("API CALL: ", requestUrl);
-        console.info("RSS:", res.body.toString('utf-8'));
         return JSON.parse(res.body.toString('utf-8'));
     },
     registerOrder: function (productId, intervalId, userId) {
         var date = new Date().toISOString().replace(/T.+/, '');
-        var req = this.request(
+        return this.request(
             HTTP_REQUEST_POST,
             REGISTER_ORDER_URL,
             {
@@ -75,8 +72,6 @@ ApiService.prototype = {
                 }
             }
         );
-        console.log(req);
-        return req;
     }
 };
 
