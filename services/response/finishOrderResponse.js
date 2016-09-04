@@ -26,7 +26,7 @@ FinishOrderResponse.prototype = {
                             "title": product.name,
                             "subtitle": product.description,
                             "quantity": 1,
-                            "price": product.price == undefined ? 0 : product.price,
+                            "price": product.base_price == undefined ? 0 : product.base_price,
                             "currency": "RON",
                             "image_url": product.image
                         }
