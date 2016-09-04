@@ -12,7 +12,7 @@ CategoryMenuResponse.prototype = {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "What do you want to do next?",
+                    text: "Pick a category?",
                     buttons: []
                 }
             }
@@ -22,11 +22,11 @@ CategoryMenuResponse.prototype = {
             this._categories.forEach(function (category) {
                 var newButton = {
                     type: "postback",
-                    title: category.title,
+                    title: category.name,
                     payload: {}
                 };
 
-                newButton.payload = "category#" + category.id;
+                newButton.payload = "category#" + category._id;
                 response.attachment.payload.buttons.push(newButton);
             });
         }
