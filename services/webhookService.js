@@ -44,6 +44,7 @@ WebHookService.prototype = {
                         console.info("Messager : ", JSON.stringify(messagingEvent));
                         facebookApi.registerUser(messagingEvent.sender.id);
                         var payload = messagingEvent.postback.payload;
+                        console.log("PayLoad", payload);
                         var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
                         if (postBackMsg !== undefined) {
                             facebookApi.sendMessage(senderId, postBackMsg);
