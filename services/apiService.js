@@ -53,7 +53,6 @@ ApiService.prototype = {
     },
     getSellingProductCategories: function () {
         var date = new Date().toISOString().replace(/T.+/, ' ');
-        console.info("Today date: ", date);
         var url = CATEGORIES_URL.replace('{date}', date);
 
         return this.request(HTTP_REQUEST_GET, url);
@@ -87,23 +86,16 @@ ApiService.prototype = {
     getUrl: function (url) {
         return API_HOST + url;
     },
-    request: function (url, method) {
+    request: function (method, url) {
+        console.log(url);
         var options = {
             port: 80,
             method: method
         };
         var requestUrl = this.getUrl(url);
-        var res = request(method, url);
+        var res = request(HTTP_REQUEST_GET, requestUrl);
 
-        return res.getBody('utf8');
-        // request(requestUrl, options, function (error, response, body) {
-        //     console.info("API CALL TO: ", requestUrl);
-        //     if (!error && response.statusCode === 200) {
-        //         return body;
-        //     } else {
-        //         console.error(error);
-        //     }
-        // });
+        return res.body.toString('utf-8');
     }
 };
 
