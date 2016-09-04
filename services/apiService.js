@@ -58,11 +58,11 @@ ApiService.prototype = {
         var res = request(method, requestUrl, options);
 
         console.info("API CALL: ", requestUrl);
-        return JSON.parse(res.body.toString('utf-8'));
+        return JSON.parse(res.getBody('utf-8').toString('utf-8'));
     },
     registerOrder: function (productId, intervalId, userId) {
         var date = new Date().toISOString().replace(/T.+/, '');
-        return this.request(
+        var req = this.request(
             HTTP_REQUEST_POST,
             REGISTER_ORDER_URL,
             {
@@ -74,6 +74,8 @@ ApiService.prototype = {
                 }
             }
         );
+        console.log(req);
+        return req;
     }
 };
 
