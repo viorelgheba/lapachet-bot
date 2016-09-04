@@ -106,7 +106,7 @@ FacebookService.prototype = {
     registerUser: function (userId) {
         request(
             {
-                url: process.env.UI_API_URL,
+                url: process.env.UI_API_URL + '/users',
                 qs: {access_token: process.env.API_TOKEN},
                 method: 'POST',
                 json: {
