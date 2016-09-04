@@ -5,7 +5,7 @@ var request = require('request');
 const API_HOST = process.env.UI_API_URL;
 const PRODUCTS_URL = '/products/{date}';
 const MENU_URL = '/menus/{date}';
-const CATEGORIES_URL = '/api/categories/daily?date={date}';
+const CATEGORIES_URL = '/categories/daily?date={date}';
 
 const HTTP_REQUEST_GET = 'GET';
 const HTTP_REQUEST_POST = 'POST';
