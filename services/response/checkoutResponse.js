@@ -37,7 +37,7 @@ CheckoutResponse.prototype = {
                         payload: "order#" + product._id + "#" + interval.id
                     };
                     console.info("Interval : ", interval);
-                    response.attachment.payload.elements.buttons.push(newButton);
+                    response.attachment.payload.elements[0].buttons.push(newButton);
                     intervalNo++;
                 }
             });
