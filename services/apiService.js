@@ -7,7 +7,7 @@ var request = require('sync-request');
 const API_HOST = 'https://lapachet-app.herokuapp.com/api';
 const PRODUCTS_URL = '/category_products?date={date}&categoryId={categoryId}';
 const PRODUCT_URL = '/products/{productId}';
-const MENU_URL = '/menus/{date}';
+const MENU_URL = '/products_menus?date={date}';
 const CATEGORIES_URL = '/categories/daily?date={date}';
 const INTERVALS_URL = '/intervals?date={date}';
 const SUBSCRIBE_USER_URL = '/users'
