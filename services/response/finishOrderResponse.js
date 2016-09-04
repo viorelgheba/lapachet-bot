@@ -1,6 +1,7 @@
 'use strict';
 
 var apiService = require('../apiService').getInstance();
+var facebookApi = require('../facebookService').getInstance();
 
 function FinishOrderResponse() {
 }
@@ -10,38 +11,9 @@ FinishOrderResponse.prototype = {
         var product = apiService.getProduct(productId);
         var order = apiService.registerOrder(productId, intervalId, userId);
         console.log("Saved order: ", JSON.stringify(product));
-        var response = {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "receipt",
-                    recipient_name: userId.toString(),
-                    order_number: order.orderId.toString(),
-                    currency: "USD",
-                    payment_method: "Visa 2345",
-                    order_url: "http://petersapparel.parseapp.com/order?order_id=123456",
-                    timestamp: new Date().getTime(),
-                    elements: [
-                        {
-                            "title": product.name,
-                            "subtitle": product.description,
-                            "quantity": 1,
-                            "price": product.base_price == undefined ? 0.00 : parseFloat(product.base_price),
-                            "currency": "RON",
-                            "image_url": product.image
-                        }
-                    ],
-                    summary: {
-                        subtotal: parseFloat(product.base_price),
-                        shipping_cost: 0.00,
-                        total_tax: parseFloat(product.base_price) - parseFloat(product.base_price / 1.24),
-                        total_cost: parseFloat(product.base_price)
-                    },
-                }
-            }
-        };
-
-        return JSON.stringify(response);
+        var msg = "Your order #"+ order.orderId +" was received. We are waiting for yout between selected hours!";
+        facebookApi.sendTextMessage(userId, msg);
+        return JSON.stringify({});
     }
 };
 
