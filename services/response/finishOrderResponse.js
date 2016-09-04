@@ -9,7 +9,7 @@ FinishOrderResponse.prototype = {
     getResponse: function (productId, intervalId, userId) {
         var product = apiService.getProduct(productId);
         var order = apiService.registerOrder(productId, intervalId, userId);
-        console.log("Saved order: ", order);
+        console.log("Saved order: ", JSON.stringify(order));
         var response = {
                 attachment: {
                     type: "template",
