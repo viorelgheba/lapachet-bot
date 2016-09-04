@@ -27,15 +27,25 @@ WebHookService.prototype = {
 
                 // Iterate over each messaging event
                 pageEntry.messaging.forEach(function (messagingEvent) {
+
+                    console.info("Message", messagingEvent);
                     var senderId = messagingEvent.sender.id;
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
-                        this.textMessage(messagingEvent);
+                        console.log('Text: ', messagingEvent.message.text);
+                        var msg = responseFactory.getResponse(messagingEvent.message.text);
+                        if (postBackMsg !== undefined) {
+                            facebookApi.sendMessage(senderId, msg);
+                        }
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
-                        this.postBack(messagingEvent);
+                        var payload = messagingEvent.postback.payload;
+                        var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
+                        if (postBackMsg !== undefined) {
+                            facebookApi.sendMessage(senderId, postBackMsg);
+                        }
                     } else if (messagingEvent.read) {
                         //receivedMessageRead(messagingEvent);
                     } else if (messagingEvent.account_linking) {
@@ -45,20 +55,6 @@ WebHookService.prototype = {
                     }
                 });
             });
-        }
-    },
-    postBack: function (messagingEvent) {
-        var payload = messagingEvent.postback.payload;
-        var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
-        if (postBackMsg !== undefined) {
-            facebookApi.sendMessage(senderId, postBackMsg);
-        }
-    },
-    textMessage: function (messagingEvent) {
-        console.log('Text: ', messagingEvent.message.text);
-        var msg = responseFactory.getResponse(messagingEvent.message.text);
-        if (msg !== undefined) {
-            facebookApi.sendMessage(senderId, msg);
         }
     }
 

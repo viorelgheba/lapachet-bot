@@ -2,7 +2,9 @@
 
 var request = require('request');
 
-const API_HOST = process.env.UI_API_URL;
+//de modificat
+//const API_HOST = process.env.UI_API_URL;
+const API_HOST = 'https://lapachet-app.herokuapp.com/api';
 const PRODUCTS_URL = '/products/{date}';
 const MENU_URL = '/menus/{date}';
 const CATEGORIES_URL = '/categories/daily?date={date}';
