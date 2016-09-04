@@ -30,8 +30,6 @@ WebHookService.prototype = {
 
                     console.info("Message", JSON.stringify(messagingEvent));
                     var senderId = messagingEvent.sender.id;
-                    facebookApi.registerUser(senderId);
-
                     if (messagingEvent.optin) {
                         //receivedAuthentication(messagingEvent);
                     } else if (messagingEvent.message) {
@@ -42,6 +40,7 @@ WebHookService.prototype = {
                     } else if (messagingEvent.delivery) {
                         //receivedDeliveryConfirmation(messagingEvent);
                     } else if (messagingEvent.postback) {
+                        facebookApi.registerUser(senderId);
                         var payload = messagingEvent.postback.payload;
                         var postBackMsg = responseFactory.getResponse(messagingEvent.postback.payload);
                         if (postBackMsg !== undefined) {
