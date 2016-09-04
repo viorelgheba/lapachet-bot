@@ -58,7 +58,8 @@ ApiService.prototype = {
         var res = request(method, requestUrl, options);
 
         console.info("API CALL: ", requestUrl);
-        return JSON.parse(res.getBody('utf-8').toString('utf-8'));
+        console.info("RSS:", res.body);
+        return JSON.parse(res.body('utf-8').toString('utf-8'));
     },
     registerOrder: function (productId, intervalId, userId) {
         var date = new Date().toISOString().replace(/T.+/, '');
