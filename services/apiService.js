@@ -45,7 +45,7 @@ ApiService.prototype = {
     getIntervals: function () {
         var date = new Date().toISOString().replace(/T.+/, '');
         var url = INTERVALS_URL.replace('{date}', date);
-        
+
         return this.request(url, HTTP_REQUEST_GET);
     },
     getUrl: function (url) {
