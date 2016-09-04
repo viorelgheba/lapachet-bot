@@ -26,16 +26,16 @@ FinishOrderResponse.prototype = {
                             "title": product.name,
                             "subtitle": product.description,
                             "quantity": 1,
-                            "price": product.base_price == undefined ? 0 : product.base_price,
+                            "price": product.base_price == undefined ? 0 : parseFloat.parse(product.base_price),
                             "currency": "RON",
                             "image_url": product.image
                         }
                     ],
                     summary: {
-                        subtotal: product.base_price,
-                        shipping_cost: 0,
-                        total_tax: product.base_price / 0.24,
-                        total_cost: product.base_price
+                        subtotal: parseFloat.parse(product.base_price),
+                        shipping_cost: 0.00,
+                        total_tax: parseFloat.parse(product.base_price / 0.24),
+                        total_cost: parseFloat.parse(product.base_price)
                     },
                 }
             }
