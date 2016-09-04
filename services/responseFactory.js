@@ -17,8 +17,8 @@ function ResponseFactory() {
 ResponseFactory.prototype = {
     getResponse: function (message) {
         var messages = message.split('#');
-        var data = messages[1];
-        var type = messages[0];
+        var data = messages[1] !== undefined ? messages[1] : null;
+        var type = messages[0] !== undefined ? messages[1] : null;
 
         console.info("type ", type);
         console.info("id ", data);
@@ -27,6 +27,7 @@ ResponseFactory.prototype = {
             case MENU:
                 break;
             case ALL:
+                console.info("step:", ALL)
                 return categoryMenu.getResponse();
                 break;
             case CATEGORY:
