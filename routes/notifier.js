@@ -10,12 +10,12 @@ router.post('/', function (req, res) {
     if (access_token != process.env.API_TOKEN) {
         res.send("Invalid token!");
     }
-    var users = req.query['users'];
-
+    var users = Json.parse(req.query['users']);
+    console.log(users);
     users.forEach(function (user) {
         console.log("Sending Message to userId: " + user);
 
-        facebookApi.sendMessage(user, "We got food suply :), please use this bot Menu");
+        facebookApi.sendMessage(user, "We got food supply :), please use this bot Menu");
     })
 });
 
