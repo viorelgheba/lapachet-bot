@@ -18,7 +18,7 @@ function ApiService() {
 
 ApiService.prototype = {
     getSellingProducts: function (categoryId) {
-        var date = new Date().toISOString().replace(/T.+/, ' ');
+        var date = new Date().toISOString().replace(/T.+/, '');
         var url = PRODUCTS_URL.replace('{date}', date);
         url = url.replace('{categoryId}', categoryId);
 
@@ -37,7 +37,7 @@ ApiService.prototype = {
         return this.request(url, HTTP_REQUEST_GET);
     },
     getSellingProductCategories: function () {
-        var date = new Date().toISOString().replace(/T.+/, ' ');
+        var date = new Date().toISOString().replace(/T.+/, '');
         var url = CATEGORIES_URL.replace('{date}', date);
 
         return this.request(HTTP_REQUEST_GET, url);
