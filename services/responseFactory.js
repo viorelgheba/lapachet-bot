@@ -5,6 +5,7 @@ var productMenu = require('../services/response/productMenuResponse').getInstanc
 var checkoutMenu = require('../services/response/checkoutResponse').getInstance();
 var orderMenu = require('../services/response/orderResponse').getInstance();
 var checkOutMenu = require('../services/response/checkoutResponse').getInstance();
+var dailyMenuResponse = require('../services/response/checkoutResponse').getInstance();
 
 const MENU = 'menu';
 const ALL = 'all';
@@ -30,6 +31,7 @@ ResponseFactory.prototype = {
 
         switch (type) {
             case MENU:
+                return dailyMenuResponse.getResponse(data);
                 break;
             case ALL:
                 return categoryMenu.getResponse();
@@ -38,10 +40,10 @@ ResponseFactory.prototype = {
                 return productMenu.getResponse(data);
                 break;
             case PRODUCT:
-                return checkoutMenu.getResponse(data[0]);
+                return checkoutMenu.getResponse(data);
                 break;
             case ORDER_PRODUCT:
-                return orderMenu.getResponse(data[0]);
+                return orderMenu.getResponse(data);
                 break;
         }
     }
