@@ -5,7 +5,7 @@ var request = require('sync-request');
 //de modificat
 //const API_HOST = process.env.UI_API_URL;
 const API_HOST = 'https://lapachet-app.herokuapp.com/api';
-const PRODUCTS_URL = '/products/{date}';
+const PRODUCTS_URL = '/api/category_products?date={date}&categoryId={categoryId}';
 const MENU_URL = '/menus/{date}';
 const CATEGORIES_URL = '/categories/daily?date={date}';
 const INTERVALS_URL = '/categories/intervals';
@@ -17,25 +17,10 @@ function ApiService() {
 }
 
 ApiService.prototype = {
-    getSellingProducts: function (date) {
-        return [
-            {
-                id: 1,
-                name: "Produs 1",
-                title: "Titlu produs 1"
-            },
-            {
-                id: 2,
-                name: "Produs 2",
-                title: "Titlu produs 2"
-            },
-            {
-                id: 3,
-                name: "Produs 3",
-                title: "Titlu produs 3"
-            }
-        ];
-        var url = PRODUCTS_URL.replace('{data}', date);
+    getSellingProducts: function (categoryId) {
+        var date = new Date().toISOString().replace(/T.+/, ' ');
+        var url = PRODUCTS_URL.replace('{date}', date);
+        url = url.replace('{categoryId}', categoryId);
 
         return this.request(url, HTTP_REQUEST_GET);
     },

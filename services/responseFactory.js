@@ -34,7 +34,7 @@ ResponseFactory.prototype = {
                 return categoryMenu.getResponse();
                 break;
             case CATEGORY:
-                return productMenu.getResponse();
+                return productMenu.getResponse(data);
                 break;
             case PRODUCT:
                 console.log("GOT PRODUCT!");

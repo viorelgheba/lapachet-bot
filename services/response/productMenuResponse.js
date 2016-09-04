@@ -3,11 +3,13 @@
 var apiService = require('../apiService').getInstance();
 
 function ProductMenuResponse() {
-    this._products = apiService.getSellingProducts();
+
 }
 
 ProductMenuResponse.prototype = {
-    getResponse: function () {
+
+    getResponse: function (categoryId) {
+        var products = apiService.getSellingProducts(categoryId);
         var response = {
             attachment: {
                 type: "template",
@@ -19,12 +21,12 @@ ProductMenuResponse.prototype = {
             }
         };
 
-        if (this._products !== undefined) {
-            this._products.forEach(function (product) {
+        if (products !== undefined) {
+            products.forEach(function (product) {
                 var newButton = {
                     type: "postback",
                     title: product.name,
-                    payload: "product#" + product.id
+                    payload: "product#" + product._id
                 };
 
                 response.attachment.payload.buttons.push(newButton);
