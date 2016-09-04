@@ -28,12 +28,12 @@ ApiService.prototype = {
     getProduct: function (productId) {
         var url = PRODUCT_URL.replace('{productId}', productId);
 
-        return this.request(url, url);
+        return this.request(HTTP_REQUEST_GET, url);
     },
     getSellingMenus: function (date) {
         var url = MENU_URL.replace('{data}', date);
 
-        return this.request(url, HTTP_REQUEST_GET);
+        return this.request(HTTP_REQUEST_GET, url);
     },
     getSellingProductCategories: function () {
         var date = new Date().toISOString().replace(/T.+/, '');
@@ -45,7 +45,7 @@ ApiService.prototype = {
         var date = new Date().toISOString().replace(/T.+/, '');
         var url = INTERVALS_URL.replace('{date}', date);
 
-        return this.request(url, HTTP_REQUEST_GET);
+        return this.request(HTTP_REQUEST_GET, url);
     },
     getUrl: function (url) {
         return API_HOST + url;
