@@ -7,9 +7,8 @@ function DailyMenuResponse() {
 }
 
 DailyMenuResponse.prototype = {
-
-    getResponse: function (categoryId) {
-        var products = apiService.getSellingProducts(categoryId);
+    getResponse: function () {
+        var products = apiService.getSellingMenus(categoryId);
         var response = {
             attachment: {
                 type: "template",
